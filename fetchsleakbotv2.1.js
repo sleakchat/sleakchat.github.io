@@ -1,4 +1,4 @@
-const sleak_htmlUrl = 'https://sleakchat.github.io/sleakbot2.1.html';
+const sleak_htmlUrl = 'https://sleakchat.github.io/sleakbotv2.1.html';
 const sleak_jsUrl = 'https://sleakchat.github.io/sleakbotv2.1.js';
 
 // Function to append the Sleak HTML document to the body

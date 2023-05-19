@@ -69,37 +69,38 @@ iframe2.src = `https://app.sleak.chat/popup/?id=${clientId}&visitorId=${visitorI
     sleakEmbeddedPopup.style.display = 'none';
   });
 
-    // Add a click event listener to the open widget
-  sleakEmbeddedPopup.addEventListener('click', function() {
-    sleakClosedWidget.style.display = 'none';
-    sleakOpenWidget.style.display = 'block';
-    sleakEmbeddedWidget.style.display = 'flex';
-    sleakBgOverlay.style.display = 'block';
-    sleakEmbeddedPopup.style.display = 'none';
-      sleakEmbeddedWidget.style.opacity = '0'; // Set initial opacity to 0
-      sleakEmbeddedWidget.style.transition = 'opacity 0.2s ease'; // Add transition effect
-      // Delay setting the opacity to 1 to trigger the fade-in effect
-      setTimeout(function() {
-        sleakEmbeddedWidget.style.opacity = '1';
-      }, 50);
-    });
+// Add a click event listener to the open widget
+sleakEmbeddedPopup.addEventListener('click', function() {
+  sleakClosedWidget.style.display = 'none';
+  sleakOpenWidget.style.display = 'block';
+  sleakEmbeddedWidget.style.display = 'flex';
+  sleakBgOverlay.style.display = 'block';
+  sleakEmbeddedPopup.style.display = 'none';
+  sleakEmbeddedWidget.style.opacity = '0'; // Set initial opacity to 0
+  sleakEmbeddedWidget.style.transition = 'opacity 0.2s ease'; // Add transition effect
+  // Delay setting the opacity to 1 to trigger the fade-in effect
+  setTimeout(function() {
+    sleakEmbeddedWidget.style.opacity = '1';
+    console.log("Popup opacity changed to 1");
+  }, 50);
+});
 
-  // function for playing chime
-  function playChime() {
-    var sleakChime = document.getElementById("sleak-chime");
-    if (sleakChime) {
-      sleakChime.play();
-    }
-
+// function for playing chime
+function playChime() {
+  var sleakChime = document.getElementById("sleak-chime");
+  if (sleakChime) {
+    sleakChime.play();
+    console.log("Chime played");
   }
+}
 
-  // show popup 6 secs after page load
-  window.onload = function() {
+// show popup 6 secs after page load
+window.onload = function() {
   setTimeout(function() {
     var sleakBodyEmbed = document.getElementById("sleak-body-embed");
     var sleakPopupOpen = document.getElementById("sleak-popup-embed");
     var sleakChime = document.getElementById("sleak-chime");
-    
+
     if (sleakBodyEmbed && sleakPopupOpen) {
       if (sleakBodyEmbed.style.display !== "flex") {
         sleakPopupOpen.style.display = "flex";
@@ -114,6 +115,7 @@ iframe2.src = `https://app.sleak.chat/popup/?id=${clientId}&visitorId=${visitorI
         setTimeout(function() {
           sleakPopupOpen.style.opacity = '1';
           sleakPopupOpen.style.transform = 'translateY(0)';
+          console.log("Popup opacity changed to 1, transform applied");
         }, 50);
 
       } else {
@@ -122,6 +124,7 @@ iframe2.src = `https://app.sleak.chat/popup/?id=${clientId}&visitorId=${visitorI
     }
   }, 6000);
 };
+
 
     // script for showing and hiding background overlay on mobile
     var sleakWidgetOpened = document.getElementById("sleak-widget-open");

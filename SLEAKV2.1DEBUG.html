@@ -6,7 +6,7 @@
 <body class="sleakbody">
 
 <!-- sleak.chat sleakbot embed snippet -->
-<script id="sleakbot" src="" user-id="mem_clibkty1103kn0sfybruq4x38" btn-color="#000"></script>
+<script id="sleakbot" src="" user-id="mem_sb_clfl8lhky0eiq0sk41kaaaktl" btn-color="#000"></script>
 
  <div id="sleak-widgetwrap">
     
@@ -220,7 +220,7 @@
 @media screen and (max-width: 479px) {
   #sleak-widgetwrap {
     z-index: 999999999;
-    width: auto;
+    width: 100vw;
     height: auto;
     background-color: rgba(0, 0, 0, 0);
     flex-direction: column;
@@ -230,6 +230,11 @@
     padding-right: 0;
     display: flex;
     position: fixed;
+  }
+
+  #sleak-widget-iframe {
+    z-index: 99999999999999999999;
+    height: 100vh !important;
   }
 
   #sleak-bgoverlay {
@@ -251,16 +256,20 @@
   }
 
   #sleak-body-embed {
-      z-index: 1;
+    z-index: 999999999999999999;
+    width: 100vw;
+    z-index: 1;
+    margin-bottom: -95px;
   }
 
   #sleak-buttonwrap {
-      z-index: 2;
+    z-index: 0;
   }
 
   .sleak-embed {
-    width: 400px;
+    width: 100vw;
     height: 100vh;
+    min-width: 300px;
     object-fit: fill;
     overflow: visible;
     z-index: 9999999999999;
@@ -317,8 +326,8 @@ var iframe = document.getElementById('sleak-widget-iframe');
 var iframe2 = document.getElementById('sleak-popup-iframe');
 var clientId = getClientId().clientId;
 var visitorId = generateUniqueId();
-iframe.src = `https://app.sleak.chat/?id=${clientId}&visitorId=${visitorId}`;
-iframe2.src = `https://app.sleak.chat/popup/?id=${clientId}&visitorId=${visitorId}`;
+iframe.src = `https://app.sleak.chat/version-test/?id=${clientId}&visitorId=${visitorId}`;
+iframe2.src = `https://app.sleak.chat/version-test/popup/?id=${clientId}&visitorId=${visitorId}`;
 
 // Change element visibility on button click
   // Get references to the elements

@@ -51,18 +51,18 @@
 
 <style>
 #sleak-widget-close {
+  display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
   height: 18px;
   width: 18px;
-  background-color: rgba(0, 0, 0, 0.20);
   border-radius: 99px;
-  right: 0;
-  top: 0;
-  z-index: 999999999999999999999;
-  color: #000;
-  font-size: 12px;
+  right: 32px;
+  top: 36px;
+  z-index: 999999999999;
+  color: rgba(0, 0, 0, 0.40);
+  font-size: 28px;
   cursor: pointer;
   transition: display 1s ease-in-out;
 }
@@ -264,7 +264,7 @@ body {
   }
 
   #sleak-widget-iframe {
-    z-index: 99999999999999999999;
+    z-index: 999999999;
     height: 100% !important;
     height: -webkit-fill-available;
     top: 0;
@@ -377,7 +377,9 @@ iframe2.src = `https://app.sleak.chat/version-test/popup/?id=${clientId}&visitor
   const sleakEmbeddedPopup = document.querySelector('#sleak-popup-embed');
   const sleakNotification = document.querySelector('#sleak-btn-notification');
   const sleakPopupClose = document.querySelector('#sleak-popup-close');
+  const sleakMobileClose = document.querySelector('#sleak-widget-close');
 
+  
 
   // Add click event listener to the closed widget
   sleakClosedWidget.addEventListener('click', function() {
@@ -421,13 +423,25 @@ sleakEmbeddedPopup.addEventListener('click', function() {
   }, 50);
 });
 
-// Add click event listener to the close btn
-  sleakPopupClose.addEventListener('click', function(closeBtnEvent) {
+// Add click event listener to popup close btn
+  sleakPopupClose.addEventListener('click', function(sleakCloseBtnEvent) {
     // stop event from propagating
-    closeBtnEvent.stopPropagation();
+    sleakCloseBtnEvent.stopPropagation();
       // Set the display properties of the elements
       sleakEmbeddedPopup.style.display = 'none';
   });
+
+// Add click event listener to widget close btn
+sleakMobileClose.addEventListener('click', function(sleakCloseMobileEvent) {
+    // stop event from propagating
+    sleakCloseMobileEvent.stopPropagation();
+      // Set the display properties of the elements
+      sleakEmbeddedWidget.style.display = 'none';
+      sleakOpenWidget.style.display = 'none';
+      sleakClosedWidget.style.display = 'block';
+  });
+
+
 
 // function for playing chime
 function playChime() {

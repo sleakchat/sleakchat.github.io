@@ -39,7 +39,6 @@ iframe2.src = `https://app.sleak.chat/popup/?id=${clientId}&visitorId=${visitorI
   const sleakClosedWidget = document.querySelector('#sleak-widget-closed');
   const sleakOpenWidget = document.querySelector('#sleak-widget-open');
   const sleakEmbeddedWidget = document.querySelector('#sleak-body-embed');
-  const sleakBgOverlay = document.querySelector('#sleak-bgoverlay');
   const sleakEmbeddedPopup = document.querySelector('#sleak-popup-embed');
   const sleakNotification = document.querySelector('#sleak-btn-notification');
   const sleakPopupClose = document.querySelector('#sleak-popup-close');
@@ -53,7 +52,6 @@ iframe2.src = `https://app.sleak.chat/popup/?id=${clientId}&visitorId=${visitorI
     sleakClosedWidget.style.display = 'none';
     sleakOpenWidget.style.display = 'block';
     sleakEmbeddedWidget.style.display = 'flex';
-    sleakBgOverlay.style.display = 'block';
     sleakEmbeddedPopup.style.display = 'none';
       sleakEmbeddedWidget.style.opacity = '0'; // Set initial opacity to 0
       sleakEmbeddedWidget.style.transition = 'opacity 0.2s ease'; // Add transition effect
@@ -69,7 +67,6 @@ iframe2.src = `https://app.sleak.chat/popup/?id=${clientId}&visitorId=${visitorI
     sleakClosedWidget.style.display = 'block';
     sleakOpenWidget.style.display = 'none';
     sleakEmbeddedWidget.style.display = 'none';
-    sleakBgOverlay.style.display = 'none';
     sleakEmbeddedPopup.style.display = 'none';
   });
 
@@ -78,7 +75,6 @@ sleakEmbeddedPopup.addEventListener('click', function() {
   sleakClosedWidget.style.display = 'none';
   sleakOpenWidget.style.display = 'block';
   sleakEmbeddedWidget.style.display = 'flex';
-  sleakBgOverlay.style.display = 'block';
   sleakEmbeddedPopup.style.display = 'none';
   sleakEmbeddedWidget.style.opacity = '0'; // Set initial opacity to 0
   sleakEmbeddedWidget.style.transition = 'opacity 0.2s ease'; // Add transition effect

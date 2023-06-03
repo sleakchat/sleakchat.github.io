@@ -42,8 +42,12 @@ iframe2.src = `https://app.sleak.chat/popup/?id=${clientId}&visitorId=${visitorI
   const sleakBgOverlay = document.querySelector('#sleak-bgoverlay');
   const sleakEmbeddedPopup = document.querySelector('#sleak-popup-embed');
   const sleakNotification = document.querySelector('#sleak-btn-notification');
+  const sleakPopupClose = document.querySelector('#sleak-popup-close');
+  const sleakMobileClose = document.querySelector('#sleak-widget-close');
 
-  // Add a click event listener to the closed widget
+  
+
+  // Add click event listener to the closed widget
   sleakClosedWidget.addEventListener('click', function() {
     // Set the display properties of the elements
     sleakClosedWidget.style.display = 'none';
@@ -59,7 +63,7 @@ iframe2.src = `https://app.sleak.chat/popup/?id=${clientId}&visitorId=${visitorI
       }, 50);
   });
 
-  // Add a click event listener to the open widget
+  // Add click event listener to the open widget
   sleakOpenWidget.addEventListener('click', function() {
     // Set the display properties of the elements
     sleakClosedWidget.style.display = 'block';
@@ -69,7 +73,7 @@ iframe2.src = `https://app.sleak.chat/popup/?id=${clientId}&visitorId=${visitorI
     sleakEmbeddedPopup.style.display = 'none';
   });
 
-// Add a click event listener to the open widget
+// Add click event listener to the popup
 sleakEmbeddedPopup.addEventListener('click', function() {
   sleakClosedWidget.style.display = 'none';
   sleakOpenWidget.style.display = 'block';
@@ -84,6 +88,26 @@ sleakEmbeddedPopup.addEventListener('click', function() {
     console.log("Popup opacity changed to 1");
   }, 50);
 });
+
+// Add click event listener to popup close btn
+  sleakPopupClose.addEventListener('click', function(sleakCloseBtnEvent) {
+    // stop event from propagating
+    sleakCloseBtnEvent.stopPropagation();
+      // Set the display properties of the elements
+      sleakEmbeddedPopup.style.display = 'none';
+  });
+
+// Add click event listener to widget close btn
+sleakMobileClose.addEventListener('click', function(sleakCloseMobileEvent) {
+    // stop event from propagating
+    sleakCloseMobileEvent.stopPropagation();
+      // Set the display properties of the elements
+      sleakEmbeddedWidget.style.display = 'none';
+      sleakOpenWidget.style.display = 'none';
+      sleakClosedWidget.style.display = 'block';
+  });
+
+
 
 // function for playing chime
 function playChime() {

@@ -1,20 +1,26 @@
-<html>
-
- <head>
+<html height="100%" max-height="100%">
+<head>
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
- </head>
+</head> 
+<body class="sleakbody">
 
- <body class="sleakbody">
+<!-- sleak.chat sleakbot embed snippet -->
+<script id="sleakbot" src="" user-id="mem_sb_clfl8lhky0eiq0sk41kaaaktl" btn-color="#000"></script>
+
  <div id="sleak-widgetwrap">
     
-    <div id="sleak-body-embed" class="sleak-embed" heigth="40px">
-      <script src=""></script>
+    <div id="sleak-body-embed" class="sleak-embed" height="40px">
+        <div id="sleak-widget-close">
+            <img src="https://uploads-ssl.webflow.com/64558916e4efcf5c5355b1d1/647a81bf8d2e511ffa243392_times-circle.svg" alt="Close Icon">
+        </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.2.11/iframeResizer.min.js"></script>
       <iframe id="sleak-widget-iframe" frameborder="0" scrolling="no" src="" height="2000px" width="400px" allowtransparency="true"></iframe>
     </div>
 
     <div id="sleak-popup-embed" class="sleak-embed">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.2.11/iframeResizer.min.js"></script>
-      <iframe id="sleak-popup-iframe" frameborder="0" scrolling="no" src="" height="160px" width="400px" allowtransparency="true"></iframe>
+      <iframe id="sleak-popup-iframe" frameborder="0" scrolling="no" src="" height="150px" width="400px" allowtransparency="true"></iframe>
+      <div id="sleak-popup-close">&#215;</div>
     </div>
 
     <div id="sleak-buttonwrap" >
@@ -29,24 +35,108 @@
 
       <svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
         <symbol viewBox="0 0 100 100">
-          <path d="M0 0 L100 0 L100 100 L0 100 Z"></path>
+          <path d="M0 0 L100 0 L100 100 L0 100 Z"></path>`
         </symbol>
       </svg>
     </div>
 
     <div id="sleak-bgoverlay"></div>
     <audio id="sleak-chime">
-      <source src="https://95c4299bd7e6e57cacd63bc0daa40451.cdn.bubble.io/f1683915349092x169143498254260580/zapsplat_multimedia_notification_pop_up_short_pop_message_003_53927.mp3" type="audio/mpeg">
-      <source src="chime.wav" type="audio/wav">
-      <!-- Include additional <source> elements for other audio formats if needed -->
+      <source src="https://95c4299bd7e6e57cacd63bc0daa40451.cdn.bubble.io/f1685661651799x595009985729566100/sleak-chime.mp3" type="audio/mpeg">
+      <source src="https://95c4299bd7e6e57cacd63bc0daa40451.cdn.bubble.io/f1685661655666x853276248979623600/sleak-chime.wav" type="audio/wav">
     </audio>
 
 </div> 
 
-
 <style>
-body.sleakbody {
-  min-height: 0 !important; 
+#sleak-widget-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  border-radius: 99px;
+  right: 30px;
+  top: 38px;
+  z-index: 999999999999;
+  color: rgba(0, 0, 0, 0.40);
+  cursor: pointer;
+  transition: display 1s ease-in-out;
+}
+
+#sleak-widget-close img {
+  opacity: 0.8;
+  width: 26px;
+  height: 26px;
+}
+
+#sleak-popup-close {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  background-color: rgba(0, 0, 0, 0.20);
+  border-radius: 99px;
+  top: 44px;
+  left: 0;
+  z-index: 99999999999;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+  transition: display 1s ease-in-out;
+}
+
+#sleak-popup-embed:hover #sleak-popup-close {
+  display: flex !important;
+}
+
+#sleak-popup-embed {
+  margin-bottom: -15px;
+  height: 150px;
+  width: 352px;
+  min-width: 352px;
+  background-color: rgba(255, 255, 255, 0);
+  justify-content: center;
+  align-items: flex-end;
+  display: none;
+  justify-content: flex-end;
+  top: 0px;
+  direction: vertical;
+  top: auto;
+  bottom: 0%;
+  left: auto;
+  right: 0%;
+}
+
+#sleak-popup-iframe {
+  z-index: 99999999999999;
+  pointer-events: none;
+  height: 160px;
+}
+
+.sleak-embed {
+  z-index: 1;
+  width: 400px;
+  min-width:400px;
+  height: 600px;
+  background-color: rgba(255, 255, 255, 0);
+  justify-content: center;
+  align-items: flex-end;
+  display: none;
+  top: auto;
+  bottom: 0%;
+  left: auto;
+  right: 0%;
+  z-index: 99999999;
+  width: auto;
+  height: auto;
+  min-height: 0;
+  justify-content: flex-end;
+  display: none;
+  position: static;
 }
 
 #sleak-buttonwrap {
@@ -64,12 +154,13 @@ body.sleakbody {
 }
 
 #sleak-btn-notification {
+  box-sizing: border-box;
   z-index: 2;
   position: absolute;
   margin-left: 48px;
   margin-bottom: 48px;
-  height: 16px;
-  width: 16px;
+  height: 17px;
+  width: 17px;
   background-color: #48E385;
   border-radius: 99px;
   border: solid;
@@ -91,19 +182,17 @@ body.sleakbody {
   bottom: 30px;
   left: auto;
   right: 30px;
-}
 
-#sleak-btn-container {
-    -webkit-mask-image: url('https://uploads-ssl.webflow.com/64558916e4efcf5c5355b1d1/6458d058560e97be74ebb657_Sleak%20logo%20-%20beeldmerk%20open.svg');
-    mask-image: url('https://uploads-ssl.webflow.com/64558916e4efcf5c5355b1d1/6458d058560e97be74ebb657_Sleak%20logo%20-%20beeldmerk%20open.svg');
-    -webkit-mask-size: contain;
-    mask-size: contain;
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    mask-position: center;
-    background-color: #ffffff; /* fallback color */
-  }
+  -webkit-mask-image: url('https://uploads-ssl.webflow.com/64558916e4efcf5c5355b1d1/6458d058560e97be74ebb657_Sleak%20logo%20-%20beeldmerk%20open.svg');
+  mask-image: url('https://uploads-ssl.webflow.com/64558916e4efcf5c5355b1d1/6458d058560e97be74ebb657_Sleak%20logo%20-%20beeldmerk%20open.svg');
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  background-color: #ffffff; /* fallback color */
+}
 
 #sleak-widgetwrap {
   z-index: 999999999;
@@ -127,52 +216,8 @@ body.sleakbody {
   max-width: 0;
 }
 
-.sleak-embed {
-  z-index: 1;
-  width: 400px;
-  min-width:400px;
-  height: 600px;
-  background-color: rgba(255, 255, 255, 0);
-  justify-content: center;
-  align-items: flex-end;
-  display: none;
-  top: auto;
-  bottom: 0%;
-  left: auto;
-  right: 0%;
-}
-
 #sleak-body-embed {
   margin-bottom: -40px;
-}
-
-#sleak-popup-embed {
-  margin-bottom: -15px;
-  width: 400px;
-  min-width:400px;
-  background-color: rgba(255, 255, 255, 0);
-  justify-content: center;
-  align-items: flex-end;
-  display: none;
-  top: auto;
-  bottom: 0%;
-  left: auto;
-  right: 0%;
-}
-
-#sleak-popup-iframe {
-    z-index: 99999999999999;
-  pointer-events: none;
-}
-
-.sleak-embed {
-  z-index: 99999999;
-  width: auto;
-  height: auto;
-  min-height: 0;
-  justify-content: flex-end;
-  display: none;
-  position: static;
 }
 
 #sleak-widget-open {
@@ -189,11 +234,26 @@ body.sleakbody {
   cursor: pointer;
 }
 
+.sleakbody {
+  min-height: 0 !important;
+}
+
+
 @media screen and (max-width: 479px) {
+
+html {
+    height: -webkit-fill-available;
+}
+
+body {
+    height: -webkit-fill-available;
+    height: 100vh;
+}
   #sleak-widgetwrap {
     z-index: 999999999;
-    width: auto;
-    height: auto;
+    width: 100vw;
+    height: 100%;
+    height: -webkit-fill-available;
     background-color: rgba(0, 0, 0, 0);
     flex-direction: column;
     justify-content: flex-end;
@@ -202,6 +262,14 @@ body.sleakbody {
     padding-right: 0;
     display: flex;
     position: fixed;
+  }
+
+  #sleak-widget-iframe {
+    z-index: 999999999;
+    height: 100% !important;
+    height: -webkit-fill-available;
+    top: 0;
+    top: 0px;
   }
 
   #sleak-bgoverlay {
@@ -222,17 +290,26 @@ body.sleakbody {
     overflow: hidden;
   }
 
-#sleak-body-embed {
+  #sleak-body-embed {
+    z-index: 999999999999999999;
+    width: 100vw;
+    height: 100%;
     z-index: 1;
-}
+    margin-bottom: -95px;
+  }
 
-#sleak-buttonwrap {
-    z-index: 2;
-}
+  #sleak-buttonwrap {
+    z-index: 0;
+  }
 
   .sleak-embed {
-    width: 400px;
+    width: 100vw;
     height: 100vh;
+    height: -webkit-fill-available;
+    top: 0;
+    top: 0px;
+
+    min-width: 300px;
     object-fit: fill;
     overflow: visible;
     z-index: 9999999999999;
@@ -241,8 +318,15 @@ body.sleakbody {
   .sleak-embed:focus {
     margin-bottom: 0;
   }
+
+  #sleak-popup-embed {
+    max-height: 160px !important;
+
+  }
+
+  #sleak-popup-close {
+  display: flex !important;
+  opacity: 1 !important;
+  }
+}
 </style>
-
-</body>
-
-</html>

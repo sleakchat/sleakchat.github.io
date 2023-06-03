@@ -152,7 +152,7 @@ window.onload = function() {
 
 
     // script for showing and hiding background overlay on mobile
-    var sleakWidgetOpened = document.getElementById("sleak-widget-open");
+    var sleakWidgetOpened = document.getElementById("sleak-widget-close");
     var sleakWidgetClosed = document.getElementById("sleak-widget-closed");
 
     if (window.matchMedia("(max-width: 768px)").matches) {

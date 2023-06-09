@@ -19,7 +19,7 @@
     
     <div id="sleak-body-embed" class="sleak-embed" height="40px">
         <div id="sleak-widget-close">
-            <img src="https://uploads-ssl.webflow.com/64558916e4efcf5c5355b1d1/647a81bf8d2e511ffa243392_times-circle.svg" alt="Close Icon">
+            <img src="https://uploads-ssl.webflow.com/64558916e4efcf5c5355b1d1/64831ee66e9b71302aa1490b_sleak-close-icon%20(1).png" alt="Close Icon">
         </div>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.2.11/iframeResizer.min.js"></script>
       <iframe id="sleak-widget-iframe" frameborder="0" scrolling="no" src="" height="2000px" width="400px" allowtransparency="true"></iframe>
@@ -61,21 +61,26 @@
   align-items: center;
   justify-content: center;
   position: absolute;
-  height: 24px;
-  width: 24px;
+  height: 36px;
+  width: 36px;
   border-radius: 99px;
-  right: 46px;
-  top: 50px;
+  right: 40px;
+  top: 46px;
   z-index: 999999999999;
   color: rgba(0, 0, 0, 0.40);
   cursor: pointer;
   transition: display 1s ease-in-out;
+  border-radius: 6px;
+}
+
+#sleak-widget-close:hover {
+  background-color: rgba(0, 0, 0, 0.05);;
 }
 
 #sleak-widget-close img {
   opacity: 0.8;
-  width: 24px;
-  height: 24px;
+  width: 14px;
+  height: 14px;
 }
 
 #sleak-popup-close {
@@ -259,6 +264,13 @@
 }
 
 @media screen and (max-width: 479px) {
+
+#sleak-widget-close {
+  height: 22px;
+  width: 22px;
+  right: 30px;
+  top: 38px;
+}
 
 #sleak-widgetwrap {
     pointer-events: none;

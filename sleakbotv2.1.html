@@ -5,43 +5,47 @@
 </head> 
 <body class="sleakbody"> 
 
- <div id="sleak-widgetwrap">
+<!-- sleak.chat sleakbot embed snippet -->
+<script id="sleakbot" src="" user-id="mem_sb_clfl8lhky0eiq0sk41kaaaktl" btn-color="#000"></script>
+
+
+<div id="sleak-widgetwrap">
     
-    <div id="sleak-body-embed" class="sleak-embed" height="40px">
-        <div id="sleak-widget-close">
-            <img src="https://uploads-ssl.webflow.com/64558916e4efcf5c5355b1d1/647a81bf8d2e511ffa243392_times-circle.svg" alt="Close Icon">
-        </div>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.2.11/iframeResizer.min.js"></script>
-      <iframe id="sleak-widget-iframe" frameborder="0" scrolling="no" src="" height="2000px" width="400px" allowtransparency="true"></iframe>
-    </div>
-
-    <div id="sleak-popup-embed" class="sleak-embed">
-      <iframe id="sleak-popup-iframe" frameborder="0" scrolling="no" src="" allowtransparency="true"></iframe>
-      <div id="sleak-popup-close">&#215;</div>
-    </div>
-
-    <div id="sleak-buttonwrap" >
-        <div id="sleak-btn-notification"></div>
-        <div id="sleak-buttonshadow"></div>
-      <div class="sleak-btn-container" id="sleak-btn-container">
-        <div id="sleak-btn-openclosed">
-          <img src="https://95c4299bd7e6e57cacd63bc0daa40451.cdn.bubble.io/f1683544062515x547494763985376000/sleak-btn-open.png" id="sleak-widget-open" alt="">
-          <img src="https://95c4299bd7e6e57cacd63bc0daa40451.cdn.bubble.io/f1683544065878x301565071913134850/sleak-btn-closed.png" id="sleak-widget-closed" alt="">
-        </div>
+  <div id="sleak-body-embed" class="sleak-embed" height="40px">
+      <div id="sleak-widget-close">
+          <img src="https://uploads-ssl.webflow.com/64558916e4efcf5c5355b1d1/64831ee66e9b71302aa1490b_sleak-close-icon%20(1).png" alt="Close Icon">
       </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.2.11/iframeResizer.min.js"></script>
+    <iframe id="sleak-widget-iframe" frameborder="0" scrolling="no" src="" height="2000px" width="400px" allowtransparency="true"></iframe>
+  </div>
 
-      <svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
-        <symbol viewBox="0 0 100 100">
-          <path d="M0 0 L100 0 L100 100 L0 100 Z"></path>`
-        </symbol>
-      </svg>
+  <div id="sleak-popup-embed" class="sleak-embed">
+    <iframe id="sleak-popup-iframe" frameborder="0" scrolling="no" src="" allowtransparency="true"></iframe>
+    <div id="sleak-popup-close">&#215;</div>
+  </div>
+
+  <div id="sleak-buttonwrap" >
+      <div id="sleak-btn-notification"></div>
+      <div id="sleak-buttonshadow"></div>
+    <div class="sleak-btn-container" id="sleak-btn-container">
+      <div id="sleak-btn-openclosed">
+        <img src="https://95c4299bd7e6e57cacd63bc0daa40451.cdn.bubble.io/f1683544062515x547494763985376000/sleak-btn-open.png" id="sleak-widget-open" alt="">
+        <img src="https://95c4299bd7e6e57cacd63bc0daa40451.cdn.bubble.io/f1683544065878x301565071913134850/sleak-btn-closed.png" id="sleak-widget-closed" alt="">
+      </div>
     </div>
 
-    <div id="sleak-bgoverlay"></div>
-    <audio id="sleak-chime">
-      <source src="https://95c4299bd7e6e57cacd63bc0daa40451.cdn.bubble.io/f1685661651799x595009985729566100/sleak-chime.mp3" type="audio/mpeg">
-      <source src="https://95c4299bd7e6e57cacd63bc0daa40451.cdn.bubble.io/f1685661655666x853276248979623600/sleak-chime.wav" type="audio/wav">
-    </audio>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
+      <symbol viewBox="0 0 100 100">
+        <path d="M0 0 L100 0 L100 100 L0 100 Z"></path>`
+      </symbol>
+    </svg>
+  </div>
+
+  <div id="sleak-bgoverlay"></div>
+  <audio id="sleak-chime">
+    <source src="https://95c4299bd7e6e57cacd63bc0daa40451.cdn.bubble.io/f1685661651799x595009985729566100/sleak-chime.mp3" type="audio/mpeg">
+    <source src="https://95c4299bd7e6e57cacd63bc0daa40451.cdn.bubble.io/f1685661655666x853276248979623600/sleak-chime.wav" type="audio/wav">
+  </audio>
 
 </div> 
 
@@ -51,21 +55,26 @@
   align-items: center;
   justify-content: center;
   position: absolute;
-  height: 22px;
-  width: 22px;
+  height: 36px;
+  width: 36px;
   border-radius: 99px;
-  right: 30px;
-  top: 38px;
+  right: 40px;
+  top: 46px;
   z-index: 999999999999;
   color: rgba(0, 0, 0, 0.40);
   cursor: pointer;
   transition: display 1s ease-in-out;
+  border-radius: 6px;
+}
+
+#sleak-widget-close:hover {
+  background-color: rgba(0, 0, 0, 0.05);;
 }
 
 #sleak-widget-close img {
   opacity: 0.8;
-  width: 22px;
-  height: 22px;
+  width: 12px;
+  height: 12px;
 }
 
 #sleak-popup-close {
@@ -77,7 +86,7 @@
   width: 18px;
   background-color: rgba(0, 0, 0, 0.20);
   border-radius: 99px;
-  top: 60px;
+  top: 70px;
   left: 0;
   z-index: 99999999999;
   color: #fff;
@@ -217,6 +226,7 @@
 }
 
 #sleak-body-embed {
+  height: 750px;
   pointer-events: auto;
   margin-bottom: -40px;
 }
@@ -249,7 +259,18 @@
 
 @media screen and (max-width: 479px) {
 
-#sleak-widgetwrap {
+  #sleak-widget-close {
+  height: 36px;
+  width: 36px;
+  right: 18px;
+  top: 18px;
+  }
+
+  #sleak-widget-close:active {
+  background-color: rgba(0, 0, 0, 0.05);;
+  }
+
+  #sleak-widgetwrap {
     pointer-events: none;
     z-index: 999999999;
     width: 100vw;
@@ -326,8 +347,8 @@
   }
 
   #sleak-popup-close {
-  display: flex !important;
-  opacity: 1 !important;
+    display: flex !important;
+    opacity: 1 !important;
   }
 }
 </style>

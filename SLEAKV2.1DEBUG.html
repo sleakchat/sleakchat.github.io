@@ -6,52 +6,46 @@
 <body class="sleakbody"> 
 
 <!-- sleak.chat sleakbot embed snippet -->
-<script id="sleakbot" src="" user-id="mem_sb_clfl8lhky0eiq0sk41kaaaktl" btn-color="#fd7777"></script>
+<script id="sleakbot" src="" user-id="mem_sb_clfl8lhky0eiq0sk41kaaaktl" btn-color="#000"></script>
 
-<html class="sleakhtml" height="0" max-height="0">
-<head class="sleakhead">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head> 
-<body class="sleakbody"> 
 
- <div id="sleak-widgetwrap">
+<div id="sleak-widgetwrap">
     
-    <div id="sleak-body-embed" class="sleak-embed" height="40px">
-        <div id="sleak-widget-close">
-            <img src="https://uploads-ssl.webflow.com/64558916e4efcf5c5355b1d1/64831ee66e9b71302aa1490b_sleak-close-icon%20(1).png" alt="Close Icon">
-        </div>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.2.11/iframeResizer.min.js"></script>
-      <iframe id="sleak-widget-iframe" frameborder="0" scrolling="no" src="" height="2000px" width="400px" allowtransparency="true"></iframe>
-    </div>
-
-    <div id="sleak-popup-embed" class="sleak-embed">
-      <iframe id="sleak-popup-iframe" frameborder="0" scrolling="no" src="" allowtransparency="true"></iframe>
-      <div id="sleak-popup-close">&#215;</div>
-    </div>
-
-    <div id="sleak-buttonwrap" >
-        <div id="sleak-btn-notification"></div>
-        <div id="sleak-buttonshadow"></div>
-      <div class="sleak-btn-container" id="sleak-btn-container">
-        <div id="sleak-btn-openclosed">
-          <img src="https://95c4299bd7e6e57cacd63bc0daa40451.cdn.bubble.io/f1683544062515x547494763985376000/sleak-btn-open.png" id="sleak-widget-open" alt="">
-          <img src="https://95c4299bd7e6e57cacd63bc0daa40451.cdn.bubble.io/f1683544065878x301565071913134850/sleak-btn-closed.png" id="sleak-widget-closed" alt="">
-        </div>
+  <div id="sleak-body-embed" class="sleak-embed">
+      <div id="sleak-widget-close">
+          <img src="https://uploads-ssl.webflow.com/64558916e4efcf5c5355b1d1/64831ee66e9b71302aa1490b_sleak-close-icon%20(1).png" alt="Close Icon">
       </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.2.11/iframeResizer.min.js"></script>
+    <iframe id="sleak-widget-iframe" frameborder="0" scrolling="no" src="" height="100%" width="400px" allowtransparency="true"></iframe>
+  </div>
 
-      <svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
-        <symbol viewBox="0 0 100 100">
-          <path d="M0 0 L100 0 L100 100 L0 100 Z"></path>`
-        </symbol>
-      </svg>
+  <div id="sleak-popup-embed" class="sleak-embed">
+    <iframe id="sleak-popup-iframe" frameborder="0" scrolling="no" src="" allowtransparency="true"></iframe>
+    <div id="sleak-popup-close">&#215;</div>
+  </div>
+
+  <div id="sleak-buttonwrap" >
+      <div id="sleak-btn-notification"></div>
+      <div id="sleak-buttonshadow"></div>
+    <div class="sleak-btn-container" id="sleak-btn-container">
+      <div id="sleak-btn-openclosed">
+        <img src="https://95c4299bd7e6e57cacd63bc0daa40451.cdn.bubble.io/f1683544062515x547494763985376000/sleak-btn-open.png" id="sleak-widget-open" alt="">
+        <img src="https://95c4299bd7e6e57cacd63bc0daa40451.cdn.bubble.io/f1683544065878x301565071913134850/sleak-btn-closed.png" id="sleak-widget-closed" alt="">
+      </div>
     </div>
 
-    <div id="sleak-bgoverlay"></div>
-    <audio id="sleak-chime">
-      <source src="https://95c4299bd7e6e57cacd63bc0daa40451.cdn.bubble.io/f1685661651799x595009985729566100/sleak-chime.mp3" type="audio/mpeg">
-      <source src="https://95c4299bd7e6e57cacd63bc0daa40451.cdn.bubble.io/f1685661655666x853276248979623600/sleak-chime.wav" type="audio/wav">
-    </audio>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
+      <symbol viewBox="0 0 100 100">
+        <path d="M0 0 L100 0 L100 100 L0 100 Z"></path>`
+      </symbol>
+    </svg>
+  </div>
+
+  <div id="sleak-bgoverlay"></div>
+  <audio id="sleak-chime">
+    <source src="https://95c4299bd7e6e57cacd63bc0daa40451.cdn.bubble.io/f1685661651799x595009985729566100/sleak-chime.mp3" type="audio/mpeg">
+    <source src="https://95c4299bd7e6e57cacd63bc0daa40451.cdn.bubble.io/f1685661655666x853276248979623600/sleak-chime.wav" type="audio/wav">
+  </audio>
 
 </div> 
 
@@ -64,8 +58,8 @@
   height: 36px;
   width: 36px;
   border-radius: 99px;
-  right: 40px;
-  top: 46px;
+  right: 39px;
+  top: 38px;
   z-index: 999999999999;
   color: rgba(0, 0, 0, 0.40);
   cursor: pointer;
@@ -211,7 +205,8 @@
 
 #sleak-widgetwrap {
   z-index: 999999999;
-  min-height: 100px;
+  height:100%;
+  max-height: 720px;
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
@@ -232,7 +227,7 @@
 }
 
 #sleak-body-embed {
-  height: 750px;
+  height: 700px;
   pointer-events: auto;
   margin-bottom: -40px;
 }
@@ -265,20 +260,18 @@
 
 @media screen and (max-width: 479px) {
 
-#sleak-widget-close {
+  #sleak-widget-close {
   height: 36px;
   width: 36px;
   right: 18px;
   top: 18px;
-}
+  }
 
-#sleak-widget-close:active {
+  #sleak-widget-close:active {
   background-color: rgba(0, 0, 0, 0.05);;
-}
+  }
 
-
-
-#sleak-widgetwrap {
+  #sleak-widgetwrap {
     pointer-events: none;
     z-index: 999999999;
     width: 100vw;
@@ -355,8 +348,8 @@
   }
 
   #sleak-popup-close {
-  display: flex !important;
-  opacity: 1 !important;
+    display: flex !important;
+    opacity: 1 !important;
   }
 }
 </style>
@@ -395,8 +388,8 @@ var iframe = document.getElementById('sleak-widget-iframe');
 var iframe2 = document.getElementById('sleak-popup-iframe');
 var clientId = getClientId().clientId;
 var visitorId = generateUniqueId();
-iframe.src = `https://app.sleak.chat/version-test/?id=${clientId}&visitorId=${visitorId}`;
-iframe2.src = `https://app.sleak.chat/version-test/popup/?id=${clientId}&visitorId=${visitorId}`;
+iframe.src = `https://app.sleak.chat/?id=${clientId}&visitorId=${visitorId}`;
+iframe2.src = `https://app.sleak.chat/popup/?id=${clientId}&visitorId=${visitorId}`;
 
 // Change element visibility on button click
   // Get references to the elements

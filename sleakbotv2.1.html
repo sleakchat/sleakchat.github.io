@@ -5,18 +5,14 @@
 </head> 
 <body class="sleakbody"> 
 
-<!-- sleak.chat sleakbot embed snippet -->
-<script id="sleakbot" src="" user-id="mem_sb_clfl8lhky0eiq0sk41kaaaktl" btn-color="#000"></script>
-
-
 <div id="sleak-widgetwrap">
     
-  <div id="sleak-body-embed" class="sleak-embed" height="40px">
+  <div id="sleak-body-embed" class="sleak-embed">
       <div id="sleak-widget-close">
           <img src="https://uploads-ssl.webflow.com/64558916e4efcf5c5355b1d1/64831ee66e9b71302aa1490b_sleak-close-icon%20(1).png" alt="Close Icon">
       </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.2.11/iframeResizer.min.js"></script>
-    <iframe id="sleak-widget-iframe" frameborder="0" scrolling="no" src="" height="2000px" width="400px" allowtransparency="true"></iframe>
+    <iframe id="sleak-widget-iframe" frameborder="0" scrolling="no" src="" height="100%" width="400px" allowtransparency="true"></iframe>
   </div>
 
   <div id="sleak-popup-embed" class="sleak-embed">
@@ -58,8 +54,8 @@
   height: 36px;
   width: 36px;
   border-radius: 99px;
-  right: 40px;
-  top: 46px;
+  right: 39px;
+  top: 38px;
   z-index: 999999999999;
   color: rgba(0, 0, 0, 0.40);
   cursor: pointer;
@@ -205,7 +201,8 @@
 
 #sleak-widgetwrap {
   z-index: 999999999;
-  min-height: 100px;
+  height:100%;
+  max-height: 720px;
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
@@ -352,3 +349,6 @@
   }
 }
 </style>
+
+</body>
+</html>

@@ -1,11 +1,10 @@
 <!-- Call the function to inject Sleak -->
 
-window.$memberstackDom.getCurrentMember().then(({ data: member }) => {
-    var clientIdDashboard = generateHiddenFieldsDashboard(member);
-    setIframeSourceDashboard(clientIdDashboard);
+  window.$memberstackDom.getCurrentMember().then(({ data: member }) => {
+    generateHiddenFieldsDashboard(member);
+    setIframeSourceDashboard(member);
   });
   
-
 // Set the background color of #sleak-btn-container to the value of the 'btn-color' attribute
 var sleakBtnContainer = document.querySelector('#sleak-btn-container');
 var sleakButtonWrap = document.querySelector('#sleak-buttonwrap');
@@ -34,7 +33,7 @@ function generateHiddenFieldsDashboard({ member }) {
 
 function setIframeSourceDashboard() {
   
-  var clientIdDashboard = generateHiddenFieldsDashboard(member);
+  var clientIdDashboard = documennt.getElementById('client-ms-id');
   var iframe = document.getElementById('sleak-widget-iframe');
   var iframe2 = document.getElementById('sleak-popup-iframe');
   var visitorId = generateUniqueId();

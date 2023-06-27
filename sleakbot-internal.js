@@ -31,6 +31,7 @@ function setIframeSourceDashboard() {
     return `clientIdDashboard=${member.id}`;
   }
   
+  var clientIdDashboard = generateHiddenFieldsDashboard(member);
   var iframe = document.getElementById('sleak-widget-iframe');
   var iframe2 = document.getElementById('sleak-popup-iframe');
   var visitorId = generateUniqueId();

@@ -1,6 +1,7 @@
 <!-- Call the function to inject Sleak -->
 
   window.$memberstackDom.getCurrentMember().then(({ data: member }) => {
+    generateHiddenFieldsDashboard;
     setIframeSourceDashboard(member);
   });
   
@@ -25,11 +26,12 @@ function generateUniqueId() {
   return visitorId;
 }
 
-function setIframeSourceDashboard() {
-  // Get memberstack id
-  function generateHiddenFieldsDashboard({ member }) {
+// Get memberstack id
+function generateHiddenFieldsDashboard({ member }) {
     return `clientIdDashboard=${member.id}`;
   }
+
+function setIframeSourceDashboard() {
   
   var clientIdDashboard = generateHiddenFieldsDashboard(member);
   var iframe = document.getElementById('sleak-widget-iframe');

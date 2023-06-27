@@ -5,6 +5,7 @@ function getClientId() {
   return { clientId, btnColor };
 }
 
+
 // Set the background color of #sleak-btn-container to the value of the 'btn-color' attribute
 var sleakBtnContainer = document.querySelector('#sleak-btn-container');
 var btnColor = getClientId().btnColor;

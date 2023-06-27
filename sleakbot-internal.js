@@ -3,8 +3,6 @@
   window.$memberstackDom.getCurrentMember().then(({ data: member }) => {
     setIframeSourceDashboard(member);
   });
-
-
   
 // Set the background color of #sleak-btn-container to the value of the 'btn-color' attribute
 var sleakBtnContainer = document.querySelector('#sleak-btn-container');
@@ -27,18 +25,17 @@ function generateUniqueId() {
   return visitorId;
 }
 
-
+function setIframeSourceDashboard() {
   // Get memberstack id
-  function generateHiddenFields({ member }) {
-    return `clientId=${member.id}`;
+  function generateHiddenFieldsDashboard({ member }) {
+    return `clientIdDashboard=${member.id}`;
   }
   
-function setIframeSourceDashboard() {
   var iframe = document.getElementById('sleak-widget-iframe');
   var iframe2 = document.getElementById('sleak-popup-iframe');
   var visitorId = generateUniqueId();
-  iframe.src = `https://app.sleak.chat/?id=mem_clj5juz9o0nt20shqfcoo74kw&visitorId=${visitorId}`; 
-  iframe2.src = `https://app.sleak.chat/popup/?id=mem_clj5juz9o0nt20shqfcoo74kw&visitorId=${visitorId}`;
+  iframe.src = `https://app.sleak.chat/?id=mem_clj5juz9o0nt20shqfcoo74kw&visitorId=${clientIdDashboard}${visitorId}`; 
+  iframe2.src = `https://app.sleak.chat/popup/?id=mem_clj5juz9o0nt20shqfcoo74kw&visitorId=${clientIdDashboard}${visitorId}`;
 };
 
 
@@ -52,8 +49,6 @@ function setIframeSourceDashboard() {
   const sleakNotification = document.querySelector('#sleak-btn-notification');
   const sleakPopupClose = document.querySelector('#sleak-popup-close');
   const sleakMobileClose = document.querySelector('#sleak-widget-close');
-
-  
 
   // Add click event listener to the closed widget
   sleakClosedWidget.addEventListener('click', function() {

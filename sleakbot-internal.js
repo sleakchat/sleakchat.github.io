@@ -28,7 +28,7 @@ function generateUniqueId() {
 
 function setIframeSourceDashboard() {
   
-  var clientIdDashboard = document.getElementById('client-ms-id');
+var clientIdDashboard = document.getElementById('client-ms-id').value;
   var iframe = document.getElementById('sleak-widget-iframe');
   var iframe2 = document.getElementById('sleak-popup-iframe');
   var visitorId = generateUniqueId();

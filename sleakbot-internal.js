@@ -1,10 +1,11 @@
 <!-- Call the function to inject Sleak -->
 
-  window.$memberstackDom.getCurrentMember().then(({ data: member }) => {
-    generateHiddenFieldsDashboard;
-    setIframeSourceDashboard(member);
+window.$memberstackDom.getCurrentMember().then(({ data: member }) => {
+    var clientIdDashboard = generateHiddenFieldsDashboard(member);
+    setIframeSourceDashboard(clientIdDashboard);
   });
   
+
 // Set the background color of #sleak-btn-container to the value of the 'btn-color' attribute
 var sleakBtnContainer = document.querySelector('#sleak-btn-container');
 var sleakButtonWrap = document.querySelector('#sleak-buttonwrap');

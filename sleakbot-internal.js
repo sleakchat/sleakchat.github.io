@@ -1,7 +1,6 @@
 <!-- Call the function to inject Sleak -->
 
   window.$memberstackDom.getCurrentMember().then(({ data: member }) => {
-    generateHiddenFieldsDashboard(member);
     setIframeSourceDashboard(member);
   });
   
@@ -26,10 +25,6 @@ function generateUniqueId() {
   return visitorId;
 }
 
-// Get memberstack id
-function generateHiddenFieldsDashboard({ member }) {
-    return `clientIdDashboard=${member.id}`;
-  }
 
 function setIframeSourceDashboard() {
   

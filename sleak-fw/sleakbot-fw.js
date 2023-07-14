@@ -18,11 +18,12 @@ function getClientId() {
   var visitorId = generateUniqueId();
   iframe.src = `https://app.sleak.chat/index-mobile/?id=${clientId}&visitorId=${visitorId}`;
 
+  const sleakEmbeddedWidget = document.querySelector('#sleak-body-embed');
+  const sleakWidgetWrap = document.querySelector('#sleak-widgetwrap');
+  const sleakWidgetClose = document.querySelector('#sleak-widget-close');
+
   document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM content loaded');
-      const sleakEmbeddedWidget = document.querySelector('#sleak-body-embed');
-      const sleakWidgetWrap = document.querySelector('#sleak-widgetwrap');
-      const sleakWidgetClose = document.querySelector('#sleak-widget-close');
       sleakWidgetWrap.style.position = 'unset !important';
       sleakWidgetClose.style.visibility = 'hidden !important';
       sleakEmbeddedWidget.style.display = 'unset !important';

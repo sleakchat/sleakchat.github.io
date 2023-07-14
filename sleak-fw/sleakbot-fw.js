@@ -16,4 +16,4 @@ function getClientId() {
   var iframe = document.getElementById('sleak-fw-widget');
   var clientIdFw = getClientIdFw().clientIdFw;
   var visitorIdFw = generateUniqueIdFw();
-  iframe.src = `https://app.sleak.chat/index-mobile/?id=${clientId}&visitorId=${visitorId}`;
+  iframe.src = `https://app.sleak.chat/index-mobile/?id=${clientIdFw}&visitorId=${visitorIdFw}`;

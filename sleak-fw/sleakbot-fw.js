@@ -1,23 +1,19 @@
 function getClientId() {
-    const sleakbotScriptTag = document.querySelector('#sleakbot');
-    const clientId = sleakbotScriptTag.getAttribute('user-id');
-    return { clientId };
+    const sleakbotScriptTagFw = document.querySelector('#sleak-fw-script');
+    const clientIdFw = sleakbotScriptTagFw.getAttribute('user-id');
+    return { clientIdFw };
   }
   
-  function generateUniqueId() {
-    var visitorId = localStorage.getItem('visitorId');
-    if (!visitorId) {
-      visitorId = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-      localStorage.setItem('visitorId', visitorId);
+  function generateUniqueIdFw() {
+    var visitorIdFw = localStorage.getItem('visitorIdFw');
+    if (!visitorIdFw) {
+      visitorIdFw = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+      localStorage.setItem('visitorIdFw', visitorIdFw);
     }
-    return visitorId;
+    return visitorIdFw;
   }
   
-  var iframe = document.getElementById('sleak-widget-iframe');
-  var clientId = getClientId().clientId;
-  var visitorId = generateUniqueId();
+  var iframe = document.getElementById('sleak-fw-widget');
+  var clientIdFw = getClientIdFw().clientIdFw;
+  var visitorIdFw = generateUniqueIdFw();
   iframe.src = `https://app.sleak.chat/index-mobile/?id=${clientId}&visitorId=${visitorId}`;
-
-  const sleakEmbeddedWidget = document.querySelector('#sleak-body-embed');
-  const sleakWidgetWrap = document.querySelector('#sleak-widgetwrap');
-  const sleakWidgetClose = document.querySelector('#sleak-widget-close');

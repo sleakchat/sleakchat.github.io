@@ -18,11 +18,16 @@ function getClientId() {
   var visitorId = generateUniqueId();
   iframe.src = `https://app.sleak.chat/index-mobile/?id=${clientId}&visitorId=${visitorId}`;
 
-  function showIframeOnLoad() {
+  function addFwStyles() {
     document.addEventListener('DOMContentLoaded', function() {
       const sleakEmbeddedWidget = document.querySelector('#sleak-body-embed');
+      const sleakWidgetWrap = document.querySelector('#sleak-widgetwrap');
+      const sleakWidgetClose = document.querySelector('#sleak-widget-close');
       sleakEmbeddedWidget.style.display = 'unset !imoprtant';
+      sleakWidgetWrap.style.position = 'unset !important';
+      sleakWidgetClose.style.visibility = 'hidden !important';
+      
     });
   }
   
-  showIframeOnLoad();
+  addFwStyles();

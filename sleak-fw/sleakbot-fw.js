@@ -1,7 +1,7 @@
 function getClientId() {
     const sleakbotScriptTag = document.querySelector('#sleakbot');
     const clientId = sleakbotScriptTag.getAttribute('user-id');
-    return { clientId, btnColor };
+    return { clientId };
   }
   
   function generateUniqueId() {
@@ -25,4 +25,4 @@ function getClientId() {
     });
   }
   
-  
+  showIframeOnLoad();

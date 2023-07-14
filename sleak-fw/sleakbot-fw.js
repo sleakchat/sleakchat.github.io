@@ -21,7 +21,7 @@ function getClientId() {
   function showIframeOnLoad() {
     document.addEventListener('DOMContentLoaded', function() {
       const sleakEmbeddedWidget = document.querySelector('#sleak-body-embed');
-      sleakEmbeddedWidget.style.display = 'block';
+      sleakEmbeddedWidget.style.display = 'unset !imoprtant';
     });
   }
   

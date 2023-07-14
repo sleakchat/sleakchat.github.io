@@ -21,11 +21,3 @@ function getClientId() {
   const sleakEmbeddedWidget = document.querySelector('#sleak-body-embed');
   const sleakWidgetWrap = document.querySelector('#sleak-widgetwrap');
   const sleakWidgetClose = document.querySelector('#sleak-widget-close');
-
-  document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM content loaded');
-      sleakWidgetWrap.style.position = 'unset !important';
-      sleakWidgetClose.style.visibility = 'hidden !important';
-      sleakEmbeddedWidget.style.display = 'unset !important';
-      console.log('Styles applied');
-  });

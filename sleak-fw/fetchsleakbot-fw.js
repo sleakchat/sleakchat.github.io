@@ -1,5 +1,5 @@
-const sleak_htmlUrl = 'https://dev.sleak.chat/sleakbot.html';
-const sleak_jsUrl = 'https://dev.sleak.chat/sleak-fw/sleakbot-fw.js';
+const sleak_htmlUrl = '/sleak-fw-iframe.html';
+const sleak_jsUrl = '/sleakbot-fw.js';
 
 // Function to append the Sleak HTML document to the body
 function appendSleakHtmlToBody(sleak_html) {

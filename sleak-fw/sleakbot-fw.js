@@ -24,9 +24,9 @@ function getClientId() {
       const sleakEmbeddedWidget = document.querySelector('#sleak-body-embed');
       const sleakWidgetWrap = document.querySelector('#sleak-widgetwrap');
       const sleakWidgetClose = document.querySelector('#sleak-widget-close');
-      sleakEmbeddedWidget.style.display = 'unset !important';
       sleakWidgetWrap.style.position = 'unset !important';
       sleakWidgetClose.style.visibility = 'hidden !important';
+      sleakEmbeddedWidget.style.display = 'unset !important';
       console.log('Styles applied');
     });
   }

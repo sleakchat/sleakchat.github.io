@@ -1,4 +1,4 @@
-function getClientId() {
+function getClientIdFw() {
     const sleakbotScriptTagFw = document.querySelector('#sleak-fw-script');
     const clientIdFw = sleakbotScriptTagFw.getAttribute('user-id');
     return { clientIdFw };

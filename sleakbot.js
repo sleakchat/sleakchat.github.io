@@ -5,13 +5,15 @@ function getClientId() {
   return { clientId, btnColor };
 }
 
-// Set the background color of #sleak-btn-container to the value of the 'btn-color' attribute
-var sleakBtnContainer = document.querySelector("#sleak-btn-container");
-var btnColor = getClientId().btnColor;
-var sleakButtonWrap = document.querySelector("#sleak-buttonwrap");
-sleakBtnContainer.style.backgroundColor = btnColor;
-sleakButtonWrap.style.opacity = "0"; // Set initial opacity to 0
-sleakButtonWrap.style.transition = "opacity 0.2s ease"; // Add transition effect
+document.addEventListener("DOMContentLoaded", function () {
+  // Set the background color of #sleak-btn-container to the value of the 'btn-color' attribute
+  var sleakBtnContainer = document.querySelector("#sleak-btn-container");
+  var btnColor = getClientId().btnColor;
+  var sleakButtonWrap = document.querySelector("#sleak-buttonwrap");
+  sleakBtnContainer.style.backgroundColor = btnColor;
+  sleakButtonWrap.style.opacity = "0"; // Set initial opacity to 0
+  sleakButtonWrap.style.transition = "opacity 0.2s ease"; // Add transition effect
+});
 
 // Delay setting the opacity to 1 to trigger the fade-in effect
 setTimeout(function () {

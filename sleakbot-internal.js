@@ -48,11 +48,11 @@ var clientIdDashboard = document.getElementById('client-ms-id').value;
 
 let firstButtonClick = true; // Flag to track the first button click
 
+const iframeDelayed = `https://app.sleak.chat/?id=mem_clj5juz9o0nt20shqfcoo74kw&visitorId=${clientIdDashboard}${visitorId}`; 
+
 // Define the function to handle widget opening
 function openSleakWidget() {
   if (firstButtonClick) {
-    
-    const iframeDelayed = `https://app.sleak.chat/?id=mem_clj5juz9o0nt20shqfcoo74kw&visitorId=${clientIdDashboard}${visitorId}`; 
 
     // Render the iframe
     iframe.src = iframeDelayed;

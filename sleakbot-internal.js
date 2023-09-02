@@ -48,6 +48,8 @@ var clientIdDashboard = document.getElementById('client-ms-id').value;
   const sleakPopupClose = document.querySelector('#sleak-popup-close');
   const sleakMobileClose = document.querySelector('#sleak-widget-close');
 
+let firstButtonClick = true; // Flag to track the first button click
+
 // Define the function to handle widget opening
 function openSleakWidget() {
   if (firstButtonClick) {

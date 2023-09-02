@@ -36,8 +36,6 @@ var visitorId = generateUniqueId();
 iframe2.src = `https://app.sleak.chat/popup/?id=${clientId}&visitorId=${visitorId}`;
 const iframeDelayed = `https://app.sleak.chat/?id=${clientId}&visitorId=${visitorId}`;
 
-let firstButtonClick = true; // Flag to track the first button click
-
 // Change element visibility on button click
 // Get references to the elements
 const sleakClosedWidget = document.querySelector("#sleak-widget-closed");
@@ -50,6 +48,8 @@ const sleakPopupClose = document.querySelector("#sleak-popup-close");
 const sleakMobileClose = document.querySelector("#sleak-widget-close");
 const sleakLoading = document.querySelector("#sleak-loadingwrap");
 const sleakIframe = document.querySelector("#sleak-widget-iframe");
+
+let firstButtonClick = true; // Flag to track the first button click
 
 // Define the function to handle widget opening
 function openSleakWidget() {

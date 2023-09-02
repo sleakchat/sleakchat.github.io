@@ -31,7 +31,6 @@ var clientIdDashboard = document.getElementById('client-ms-id').value;
   var iframe = document.getElementById('sleak-widget-iframe');
   var iframe2 = document.getElementById('sleak-popup-iframe');
   var visitorId = generateUniqueId();
-  const iframeDelayed = `https://app.sleak.chat/?id=mem_clj5juz9o0nt20shqfcoo74kw&visitorId=${clientIdDashboard}${visitorId}`; 
   iframe2.src = `https://app.sleak.chat/popup/?id=mem_clj5juz9o0nt20shqfcoo74kw&visitorId=${clientIdDashboard}${visitorId}`;
 };
 
@@ -53,6 +52,8 @@ let firstButtonClick = true; // Flag to track the first button click
 function openSleakWidget() {
   if (firstButtonClick) {
     
+    const iframeDelayed = `https://app.sleak.chat/?id=mem_clj5juz9o0nt20shqfcoo74kw&visitorId=${clientIdDashboard}${visitorId}`; 
+
     // Render the iframe
     iframe.src = iframeDelayed;
 

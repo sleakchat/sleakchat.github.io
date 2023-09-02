@@ -25,6 +25,8 @@ function generateUniqueId() {
   return visitorId;
 }
 
+let iframeDelayed = ''; // Using let to allow reassignment
+
 function setIframeSourceDashboard() {
   
 var clientIdDashboard = document.getElementById('client-ms-id').value;
@@ -32,6 +34,7 @@ var clientIdDashboard = document.getElementById('client-ms-id').value;
   var iframe2 = document.getElementById('sleak-popup-iframe');
   var visitorId = generateUniqueId();
   iframe2.src = `https://app.sleak.chat/popup/?id=mem_clj5juz9o0nt20shqfcoo74kw&visitorId=${clientIdDashboard}${visitorId}`;
+  iframeDelayed = `https://app.sleak.chat/?id=mem_clj5juz9o0nt20shqfcoo74kw&visitorId=${clientIdDashboard}${visitorId}`; 
 };
 
 
@@ -47,8 +50,6 @@ var clientIdDashboard = document.getElementById('client-ms-id').value;
   const sleakMobileClose = document.querySelector('#sleak-widget-close');
 
 let firstButtonClick = true; // Flag to track the first button click
-
-const iframeDelayed = `https://app.sleak.chat/?id=mem_clj5juz9o0nt20shqfcoo74kw&visitorId=${clientIdDashboard}${visitorId}`; 
 
 // Define the function to handle widget opening
 function openSleakWidget() {

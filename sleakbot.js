@@ -30,12 +30,11 @@ function generateUniqueId() {
 }
 
 var iframe2 = document.getElementById("sleak-popup-iframe");
-iframe2.src = `https://app.sleak.chat/popup/?id=${clientId}&visitorId=${visitorId}`;
-
 var iframe = document.getElementById("sleak-widget-iframe");
 var clientId = getClientId().clientId;
 var visitorId = generateUniqueId();
 const iframeDelayed = `https://app.sleak.chat/?id=${clientId}&visitorId=${visitorId}`;
+iframe2.src = `https://app.sleak.chat/popup/?id=${clientId}&visitorId=${visitorId}`;
 
 let firstButtonClick = true; // Flag to track the first button click
 

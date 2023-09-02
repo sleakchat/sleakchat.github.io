@@ -15,23 +15,29 @@ function appendSleakJsToBody() {
   document.body.appendChild(sleak_script);
 }
 
-// Function to fetch the Sleak HTML document and append it to the DOM
-function fetchAndAppendHtml() {
-  return fetch(sleak_htmlUrl)
+// Function to fetch the Sleak HTML document and the JS script
+function fetchResources() {
+  const htmlPromise = fetch(sleak_htmlUrl)
     .then((sleak_response) => sleak_response.text())
     .then((sleak_html) => {
       appendSleakHtmlToBody(sleak_html);
     });
+
+  const jsPromise = fetch(sleak_jsUrl).then(() => {
+    appendSleakJsToBody();
+  });
+
+  // Wait for both promises to resolve
+  return Promise.all([htmlPromise, jsPromise]);
 }
 
-// Wait for the DOM content to load and then append the JS script
-document.addEventListener("DOMContentLoaded", () => {
-  fetchAndAppendHtml()
-    .then(() => {
-      appendSleakJsToBody();
-      console.log("Sleak resources have been loaded and appended to the body.");
-    })
-    .catch((error) => {
-      console.error("Error occurred while loading resources:", error);
-    });
-});
+// Call the fetchResources function to fetch and append the resources
+fetchResources()
+  .then(() => {
+    // Resources have finished loading and have been appended, perform any necessary actions here
+    // You can add your code here that relies on the Sleak HTML and JS being loaded
+    console.log("Sleak resources have been loaded and appended to the body.");
+  })
+  .catch((error) => {
+    console.error("Error occurred while loading resources:", error);
+  });

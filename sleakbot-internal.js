@@ -25,14 +25,13 @@ function generateUniqueId() {
   return visitorId;
 }
 
-
 function setIframeSourceDashboard() {
   
 var clientIdDashboard = document.getElementById('client-ms-id').value;
   var iframe = document.getElementById('sleak-widget-iframe');
   var iframe2 = document.getElementById('sleak-popup-iframe');
   var visitorId = generateUniqueId();
-  iframe.src = `https://app.sleak.chat/?id=mem_clj5juz9o0nt20shqfcoo74kw&visitorId=${clientIdDashboard}${visitorId}`; 
+  const iframeDelayed = `https://app.sleak.chat/?id=mem_clj5juz9o0nt20shqfcoo74kw&visitorId=${clientIdDashboard}${visitorId}`; 
   iframe2.src = `https://app.sleak.chat/popup/?id=mem_clj5juz9o0nt20shqfcoo74kw&visitorId=${clientIdDashboard}${visitorId}`;
 };
 

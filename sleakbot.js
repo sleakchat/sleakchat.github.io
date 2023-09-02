@@ -51,8 +51,8 @@ const sleakMobileClose = document.querySelector("#sleak-widget-close");
 const sleakLoading = document.querySelector("#sleak-loadingwrap");
 const sleakIframe = document.querySelector("#sleak-widget-iframe");
 
-// Add click event listener to the closed widget
-sleakClosedWidget.addEventListener("click", function () {
+// Define the function to handle widget opening
+function openSleakWidget() {
   if (firstButtonClick) {
     // Render the iframe
     iframe.src = iframeDelayed;
@@ -76,7 +76,6 @@ sleakClosedWidget.addEventListener("click", function () {
       sleakIframe.style.display = "block";
       sleakIframe.style.opacity = "0"; // Set initial opacity to 0
       sleakIframe.style.transition = "opacity 0.2s ease"; // Add transition effect
-      console.log("Iframe being shown."); // Added console log
       setTimeout(function () {
         sleakIframe.style.opacity = "1";
       }, 500);
@@ -98,9 +97,15 @@ sleakClosedWidget.addEventListener("click", function () {
       sleakEmbeddedWidget.style.opacity = "1";
     }, 50);
   }
-});
+}
 
-// Add click event listener to the open widget
+// Add click event listener to the closed widget
+sleakClosedWidget.addEventListener("click", openSleakWidget);
+
+// Add click event listener to the popup
+sleakEmbeddedPopup.addEventListener("click", openSleakWidget);
+
+// Add click event listener to the button (when widget open)
 sleakOpenWidget.addEventListener("click", function () {
   // Set the display properties of the elements
   sleakClosedWidget.style.display = "block";
@@ -108,22 +113,6 @@ sleakOpenWidget.addEventListener("click", function () {
   sleakEmbeddedWidget.style.display = "none";
   sleakBgOverlay.style.display = "none";
   sleakEmbeddedPopup.style.display = "none";
-});
-
-// Add click event listener to the popup
-sleakEmbeddedPopup.addEventListener("click", function () {
-  sleakClosedWidget.style.display = "none";
-  sleakOpenWidget.style.display = "block";
-  sleakEmbeddedWidget.style.display = "flex";
-  sleakBgOverlay.style.display = "block";
-  sleakEmbeddedPopup.style.display = "none";
-  sleakEmbeddedWidget.style.opacity = "0"; // Set initial opacity to 0
-  sleakEmbeddedWidget.style.transition = "opacity 0.2s ease"; // Add transition effect
-  // Delay setting the opacity to 1 to trigger the fade-in effect
-  setTimeout(function () {
-    sleakEmbeddedWidget.style.opacity = "1";
-    console.log("Popup opacity changed to 1");
-  }, 50);
 });
 
 // Add click event listener to popup close btn

@@ -48,23 +48,66 @@ var clientIdDashboard = document.getElementById('client-ms-id').value;
   const sleakPopupClose = document.querySelector('#sleak-popup-close');
   const sleakMobileClose = document.querySelector('#sleak-widget-close');
 
-  // Add click event listener to the closed widget
-  sleakClosedWidget.addEventListener('click', function() {
+// Define the function to handle widget opening
+function openSleakWidget() {
+  if (firstButtonClick) {
+    
+    // Render the iframe
+    iframe.src = iframeDelayed;
+
     // Set the display properties of the elements
     sleakClosedWidget.style.display = 'none';
     sleakOpenWidget.style.display = 'block';
     sleakEmbeddedWidget.style.display = 'flex';
     sleakBgOverlay.style.display = 'block';
     sleakEmbeddedPopup.style.display = 'none';
-      sleakEmbeddedWidget.style.opacity = '0'; // Set initial opacity to 0
-      sleakEmbeddedWidget.style.transition = 'opacity 0.2s ease'; // Add transition effect
+    sleakEmbeddedWidget.style.opacity = '0'; // Set initial opacity to 0
+    sleakEmbeddedWidget.style.transition = 'opacity 0.2s ease'; // Add transition effect
       // Delay setting the opacity to 1 to trigger the fade-in effect
       setTimeout(function() {
-        sleakEmbeddedWidget.style.opacity = '1';
-      }, 50);
-  });
+      sleakEmbeddedWidget.style.opacity = '1';
+    }, 50);
+    
+    // Delay showing the iframe
+    setTimeout(function() {
+    // Hide loading wrap
+    sleakIframe.style.display = 'block';
+    sleakIframe.style.opacity = '0'; // Set initial opacity to 0
+    sleakIframe.style.transition = 'opacity 0.2s ease'; // Add transition effect
+    setTimeout(function() {
+  sleakIframe.style.opacity = '1';
+}, 500);
+    
+    }, 1000);
+    
+    firstButtonClick = false; // Update the flag
+  } else {
 
-  // Add click event listener to the open widget
+    // If it's not the first click, open immediately
+    sleakClosedWidget.style.display = 'none';
+    sleakOpenWidget.style.display = 'block';
+    sleakEmbeddedWidget.style.display = 'flex';
+    sleakBgOverlay.style.display = 'block';
+    sleakEmbeddedPopup.style.display = 'none';
+    sleakEmbeddedWidget.style.opacity = '0'; // Set initial opacity to 0
+    sleakEmbeddedWidget.style.transition = 'opacity 0.2s ease'; // Add transition effect
+    
+    // Delay setting the opacity to 1 to trigger the fade-in effect
+    setTimeout(function() {
+      sleakEmbeddedWidget.style.opacity = '1';
+    }, 50);
+    
+  }
+}
+
+// Add click event listener to the closed widget
+sleakClosedWidget.addEventListener('click', (openSleakWidget));
+
+// Add click event listener to the popup
+sleakEmbeddedPopup.addEventListener('click', (openSleakWidget));
+
+
+  // Add click event listener to the button (when widget open)
   sleakOpenWidget.addEventListener('click', function() {
     // Set the display properties of the elements
     sleakClosedWidget.style.display = 'block';
@@ -73,22 +116,6 @@ var clientIdDashboard = document.getElementById('client-ms-id').value;
     sleakBgOverlay.style.display = 'none';
     sleakEmbeddedPopup.style.display = 'none';
   });
-
-// Add click event listener to the popup
-sleakEmbeddedPopup.addEventListener('click', function() {
-  sleakClosedWidget.style.display = 'none';
-  sleakOpenWidget.style.display = 'block';
-  sleakEmbeddedWidget.style.display = 'flex';
-  sleakBgOverlay.style.display = 'block';
-  sleakEmbeddedPopup.style.display = 'none';
-  sleakEmbeddedWidget.style.opacity = '0'; // Set initial opacity to 0
-  sleakEmbeddedWidget.style.transition = 'opacity 0.2s ease'; // Add transition effect
-  // Delay setting the opacity to 1 to trigger the fade-in effect
-  setTimeout(function() {
-    sleakEmbeddedWidget.style.opacity = '1';
-    console.log("Popup opacity changed to 1");
-  }, 50);
-});
 
 // Add click event listener to popup close btn
   sleakPopupClose.addEventListener('click', function(sleakCloseBtnEvent) {

@@ -77,6 +77,7 @@ sleakClosedWidget.addEventListener("click", function () {
       sleakIframe.style.display = "block";
       sleakIframe.style.opacity = "0"; // Set initial opacity to 0
       sleakIframe.style.transition = "opacity 0.2s ease"; // Add transition effect
+      console.log("Iframe is being shown."); // Added console log
       setTimeout(function () {
         sleakIframe.style.opacity = "1";
       }, 500);

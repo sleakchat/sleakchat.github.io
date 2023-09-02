@@ -49,6 +49,8 @@ var clientIdDashboard = document.getElementById('client-ms-id').value;
   const sleakPopupClose = document.querySelector('#sleak-popup-close');
   const sleakMobileClose = document.querySelector('#sleak-widget-close');
   var iframe = document.getElementById('sleak-widget-iframe');
+  const sleakIframe = document.querySelector('#sleak-widget-iframe');
+
 
 let firstButtonClick = true; // Flag to track the first button click
 

@@ -188,3 +188,41 @@ if (window.matchMedia("(max-width: 768px)").matches) {
     console.log("Body overflow set to auto.");
   });
 }
+
+// event listener for child window
+(function (window) {
+  addEvent(window, "message", function (message) {
+    try {
+      var data = JSON.parse(message.data);
+      console.log("Received message:", data); // Log the received message
+      var dataLayer = window.dataLayer || (window.dataLayer = []);
+      if (data.event) {
+        dataLayer.push({
+          event: data.event,
+          postMessageData: data,
+        });
+        console.log("Pushed data to dataLayer:", data);
+      }
+    } catch (e) {
+      console.error("Error:", e); // Log any errors that occur during parsing or processing
+    }
+  });
+
+  // Cross-browser event listener
+  function addEvent(el, evt, fn) {
+    if (el.addEventListener) {
+      el.addEventListener(evt, fn);
+    } else if (el.attachEvent) {
+      el.attachEvent("on" + evt, function (evt) {
+        fn.call(el, evt);
+      });
+    } else if (
+      typeof el["on" + evt] === "undefined" ||
+      el["on" + evt] === null
+    ) {
+      el["on" + evt] = function (evt) {
+        fn.call(el, evt);
+      };
+    }
+  }
+})(window);

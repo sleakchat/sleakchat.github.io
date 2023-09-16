@@ -214,29 +214,31 @@ window.onload = function () {
 
 // event listener for child window
 (function (window) {
+  function isValidJSON(str) {
+    try {
+      JSON.parse(str);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
   window.addEventListener("message", function (message) {
+    var data;
+
+    // Check if message.data is a string and if it's a valid JSON string
+    if (typeof message.data !== "string" || !isValidJSON(message.data)) {
+      return; // Exit early if message.data is not a string or not a valid JSON string
+    }
+
+    // Now, parse the message.
+    data = JSON.parse(message.data);
+
     var validEvents = ["sleakChatInitiated", "sleakLeadGenerated"];
 
-    // Check if the raw message string contains any of the valid event names
-    var isExpectedMessage = false;
-
-    if (typeof message.data === "string") {
-      isExpectedMessage = validEvents.some(function (eventName) {
-        return message.data.includes(eventName);
-      });
-    }
-
-    if (!isExpectedMessage) {
-      return; // Ignore messages that don't contain one of the expected event names
-    }
-
-    // Now attempt to parse the message
-    var data;
-    try {
-      data = JSON.parse(message.data);
-    } catch (e) {
-      console.warn("Failed to parse message:", message.data);
-      return;
+    // Check if the parsed message has a known event name
+    if (!data.event || validEvents.indexOf(data.event) === -1) {
+      return; // Ignore messages that don't have one of the expected event names
     }
 
     console.log("Received message:", data); // Log the received message

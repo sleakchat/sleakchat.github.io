@@ -212,25 +212,38 @@ window.onload = function () {
   iframeWindow.postMessage({ windowWidth: window.innerWidth }, "*");
 };
 
+
+
+
+
 // event listener for child window
-(function (window) {
-  addEvent(window, "message", function (message) {
-    try {
+addEvent(window, "message", function (message) {
+  try {
       var data = JSON.parse(message.data);
-      console.log("Received message:", data); // Log the received message
+
+      // Check if the message has a known event name
+      var validEvents = ['sleakChatInitiated', 'sleakLeadGenerated'];
+      if (!data.event || validEvents.indexOf(data.event) === -1) {
+          return; // Ignore messages that don't have one of the expected event names
+      }
+
+      console.log("Received message:", data); 
       var dataLayer = window.dataLayer || (window.dataLayer = []);
       if (data.event) {
-        dataLayer.push({
-          event: data.event,
-          postMessageData: data,
-        });
-        console.log("Pushed data to dataLayer:", data);
+          dataLayer.push({
+              event: data.event,
+              postMessageData: data,
+          });
+          console.log("Pushed data to dataLayer:", data);
       }
-    } catch (e) {
-      console.error("Error:", e); // Log any errors that occur during parsing or processing
-    }
-  });
+  } catch (e) {
+      console.error("Error:", e); 
+  }
+});
 
+
+
+  
   // Cross-browser event listener
   function addEvent(el, evt, fn) {
     if (el.addEventListener) {

@@ -214,7 +214,7 @@ window.onload = function () {
 
 // event listener for child window
 (function (window) {
-  addEvent(window, "message", function (message) {
+  window.addEventListener("message", function (message) {
     try {
       var data = JSON.parse(message.data);
 
@@ -237,22 +237,4 @@ window.onload = function () {
       console.error("Error:", e); // Log any errors that occur during parsing or processing
     }
   });
-
-  // Cross-browser event listener
-  function addEvent(el, evt, fn) {
-    if (el.addEventListener) {
-      el.addEventListener(evt, fn);
-    } else if (el.attachEvent) {
-      el.attachEvent("on" + evt, function (evt) {
-        fn.call(el, evt);
-      });
-    } else if (
-      typeof el["on" + evt] === "undefined" ||
-      el["on" + evt] === null
-    ) {
-      el["on" + evt] = function (evt) {
-        fn.call(el, evt);
-      };
-    }
-  }
 })(window);

@@ -215,26 +215,34 @@ window.onload = function () {
 // event listener for child window
 (function (window) {
   window.addEventListener("message", function (message) {
+    var validEvents = ["sleakChatInitiated", "sleakLeadGenerated"];
+
+    // Check if the raw message string contains any of the valid event names
+    var isExpectedMessage = validEvents.some(function (eventName) {
+      return message.data.includes(eventName);
+    });
+
+    if (!isExpectedMessage) {
+      return; // Ignore messages that don't contain one of the expected event names
+    }
+
+    // Now attempt to parse the message
+    var data;
     try {
-      var data = JSON.parse(message.data);
-
-      // Check if the message has a known event name
-      var validEvents = ["sleakChatInitiated", "sleakLeadGenerated"];
-      if (!data.event || validEvents.indexOf(data.event) === -1) {
-        return; // Ignore messages that don't have one of the expected event names
-      }
-
-      console.log("Received message:", data); // Log the received message
-      var dataLayer = window.dataLayer || (window.dataLayer = []);
-      if (data.event) {
-        dataLayer.push({
-          event: data.event,
-          postMessageData: data,
-        });
-        console.log("Pushed data to dataLayer:", data);
-      }
+      data = JSON.parse(message.data);
     } catch (e) {
-      console.error("Error:", e); // Log any errors that occur during parsing or processing
+      console.warn("Failed to parse message:", message.data);
+      return;
+    }
+
+    console.log("Received message:", data); // Log the received message
+    var dataLayer = window.dataLayer || (window.dataLayer = []);
+    if (data.event) {
+      dataLayer.push({
+        event: data.event,
+        postMessageData: data,
+      });
+      console.log("Pushed data to dataLayer:", data);
     }
   });
 })(window);

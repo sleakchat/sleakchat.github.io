@@ -218,9 +218,13 @@ window.onload = function () {
     var validEvents = ["sleakChatInitiated", "sleakLeadGenerated"];
 
     // Check if the raw message string contains any of the valid event names
-    var isExpectedMessage = validEvents.some(function (eventName) {
-      return message.data.includes(eventName);
-    });
+    var isExpectedMessage = false;
+
+    if (typeof message.data === "string") {
+      isExpectedMessage = validEvents.some(function (eventName) {
+        return message.data.includes(eventName);
+      });
+    }
 
     if (!isExpectedMessage) {
       return; // Ignore messages that don't contain one of the expected event names

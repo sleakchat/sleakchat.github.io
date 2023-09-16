@@ -139,7 +139,6 @@ function playChime() {
   var sleakChime = document.getElementById("sleak-chime");
   if (sleakChime) {
     sleakChime.play();
-    console.log("Chime played");
   }
 }
 
@@ -153,22 +152,18 @@ window.onload = function () {
     if (sleakBodyEmbed && sleakPopupOpen) {
       if (sleakBodyEmbed.style.display !== "flex") {
         sleakPopupOpen.style.display = "flex";
-        console.log("Popup display changed to flex");
         playChime();
 
         sleakPopupOpen.style.opacity = "0"; // Set initial opacity to 0
-        sleakPopupOpen.style.transform = "translateY(20px)"; // Initial vertical translation
+        sleakPopupOpen.style.transform = "translateY(20px)";
         sleakPopupOpen.style.transition =
-          "opacity 0.5s ease, transform 0.5s ease"; // Add transition effects
+          "opacity 0.5s ease, transform 0.5s ease";
 
         // Delay setting the opacity and transform to 1 to trigger the fade-in-up effect
         setTimeout(function () {
           sleakPopupOpen.style.opacity = "1";
           sleakPopupOpen.style.transform = "translateY(0)";
-          console.log("Popup opacity changed to 1, transform applied");
         }, 50);
-      } else {
-        console.log("Popup cannot open when sleak-body-embed is displayed");
       }
     }
   }, 6000);
@@ -181,11 +176,9 @@ var sleakWidgetClosed = document.getElementById("sleak-widget-closed");
 if (window.matchMedia("(max-width: 768px)").matches) {
   sleakWidgetOpened.addEventListener("click", function () {
     document.body.style.overflow = "auto";
-    console.log("Body overflow set to hidden.");
   });
   sleakWidgetClosed.addEventListener("click", function () {
     document.body.style.overflow = "hidden";
-    console.log("Body overflow set to auto.");
   });
 }
 
@@ -226,3 +219,19 @@ if (window.matchMedia("(max-width: 768px)").matches) {
     }
   }
 })(window);
+
+const sleakIframeWidget = document.querySelector("sleak-widget-iframe");
+
+if (sleakIframe) {
+  sleakIframeWidget.onload = function () {
+    // Now it's safe to access contentWindow and postMessage
+    const sleakIframeWindow = this.contentWindow;
+    sleakIframeWindow.postMessage({ windowWidth: window.innerWidth }, "*");
+    console.log(
+      "After iframe src set & content loaded: Sent window width to iframe:",
+      window.innerWidth
+    );
+  };
+} else {
+  console.log("Could not find the 'sleak-widget-iframe'.");
+}

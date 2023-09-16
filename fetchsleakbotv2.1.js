@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
   fetchAndAppendHtml()
     .then(() => {
       appendSleakJsToBody();
-      console.log("Sleak resources have been loaded and appended to the body.");
+      console.log("Sleak initialized");
     })
     .catch((error) => {
       console.error("Error occurred while loading resources:", error);

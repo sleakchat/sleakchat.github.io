@@ -198,6 +198,20 @@ if (sleakIframeWidget) {
   console.log("Could not find the 'sleak-widget-iframe'.");
 }
 
+window.addEventListener("resize", function () {
+  const sleakIframeWindow = document.querySelector(
+    "sleak-widget-iframe"
+  ).contentWindow;
+  sleakIframeWindow.postMessage({ windowWidth: window.innerWidth }, "*");
+});
+
+window.onload = function () {
+  const iframeWindow = document.querySelector(
+    "sleak-widget-iframe"
+  ).contentWindow;
+  iframeWindow.postMessage({ windowWidth: window.innerWidth }, "*");
+};
+
 // event listener for child window
 (function (window) {
   addEvent(window, "message", function (message) {

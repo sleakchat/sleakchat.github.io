@@ -182,6 +182,22 @@ if (window.matchMedia("(max-width: 768px)").matches) {
   });
 }
 
+const sleakIframeWidget = document.querySelector("sleak-widget-iframe");
+
+if (sleakIframe) {
+  sleakIframeWidget.onload = function () {
+    // Now it's safe to access contentWindow and postMessage
+    const sleakIframeWindow = this.contentWindow;
+    sleakIframeWindow.postMessage({ windowWidth: window.innerWidth }, "*");
+    console.log(
+      "After iframe src set & content loaded: Sent window width to iframe:",
+      window.innerWidth
+    );
+  };
+} else {
+  console.log("Could not find the 'sleak-widget-iframe'.");
+}
+
 // event listener for child window
 (function (window) {
   addEvent(window, "message", function (message) {
@@ -219,19 +235,3 @@ if (window.matchMedia("(max-width: 768px)").matches) {
     }
   }
 })(window);
-
-const sleakIframeWidget = document.querySelector("sleak-widget-iframe");
-
-if (sleakIframe) {
-  sleakIframeWidget.onload = function () {
-    // Now it's safe to access contentWindow and postMessage
-    const sleakIframeWindow = this.contentWindow;
-    sleakIframeWindow.postMessage({ windowWidth: window.innerWidth }, "*");
-    console.log(
-      "After iframe src set & content loaded: Sent window width to iframe:",
-      window.innerWidth
-    );
-  };
-} else {
-  console.log("Could not find the 'sleak-widget-iframe'.");
-}

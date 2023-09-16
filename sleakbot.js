@@ -184,7 +184,7 @@ if (window.matchMedia("(max-width: 768px)").matches) {
 
 const sleakIframeWidget = document.querySelector("sleak-widget-iframe");
 
-if (sleakIframe) {
+if (sleakIframeWidget) {
   sleakIframeWidget.onload = function () {
     // Now it's safe to access contentWindow and postMessage
     const sleakIframeWindow = this.contentWindow;

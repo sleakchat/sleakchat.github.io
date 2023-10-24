@@ -27,7 +27,7 @@ function fetchAndAppendHtml() {
 }
 
 // Wait for the DOM content to load and then append the JS script
-document.addEventListener("DOMContentLoaded", () => {
+window.onload = function () {
   fetchAndAppendHtml()
     .then(() => {
       appendSleakJsToBody();
@@ -36,4 +36,4 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch((error) => {
       console.error("Error occurred while loading resources:", error);
     });
-});
+};

@@ -1,3 +1,5 @@
+console.log("Start fetch script");
+
 const sleak_htmlUrl = "https://dev.sleak.chat/sleakbot.html";
 const sleak_jsUrl = "https://dev.sleak.chat/sleakbot.js";
 

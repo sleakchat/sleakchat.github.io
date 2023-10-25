@@ -142,32 +142,41 @@ function playChime() {
   }
 }
 
-// show popup 6 secs after page load
-window.onload = function () {
-  setTimeout(function () {
-    var sleakBodyEmbed = document.getElementById("sleak-body-embed");
-    var sleakPopupOpen = document.getElementById("sleak-popup-embed");
-    var sleakChime = document.getElementById("sleak-chime");
+// Check if the popup has already been triggered in this session
+var sessionStorageKey = clientId + "_sleakPopupTriggered";
+var hasPopupBeenTriggered = sessionStorage.getItem(sessionStorageKey);
 
-    if (sleakBodyEmbed && sleakPopupOpen) {
-      if (sleakBodyEmbed.style.display !== "flex") {
-        sleakPopupOpen.style.display = "flex";
-        playChime();
+// Check if the popup has not been triggered yet
+if (!hasPopupBeenTriggered) {
+  window.onload = function () {
+    setTimeout(function () {
+      var sleakBodyEmbed = document.getElementById("sleak-body-embed");
+      var sleakPopupOpen = document.getElementById("sleak-popup-embed");
+      var sleakChime = document.getElementById("sleak-chime");
 
-        sleakPopupOpen.style.opacity = "0"; // Set initial opacity to 0
-        sleakPopupOpen.style.transform = "translateY(20px)";
-        sleakPopupOpen.style.transition =
-          "opacity 0.5s ease, transform 0.5s ease";
+      if (sleakBodyEmbed && sleakPopupOpen) {
+        if (sleakBodyEmbed.style.display !== "flex") {
+          sleakPopupOpen.style.display = "flex";
+          playChime();
 
-        // Delay setting the opacity and transform to 1 to trigger the fade-in-up effect
-        setTimeout(function () {
-          sleakPopupOpen.style.opacity = "1";
-          sleakPopupOpen.style.transform = "translateY(0)";
-        }, 50);
+          sleakPopupOpen.style.opacity = "0"; // Set initial opacity to 0
+          sleakPopupOpen.style.transform = "translateY(20px)";
+          sleakPopupOpen.style.transition =
+            "opacity 0.5s ease, transform 0.5s ease";
+
+          // Delay setting the opacity and transform to 1 to trigger the fade-in-up effect
+          setTimeout(function () {
+            sleakPopupOpen.style.opacity = "1";
+            sleakPopupOpen.style.transform = "translateY(0)";
+          }, 50);
+
+          // Set the flag in sessionStorage to indicate that the popup has been triggered
+          sessionStorage.setItem(sessionStorageKey, "true");
+        }
       }
-    }
-  }, 6000);
-};
+    }, 6000);
+  };
+}
 
 // script for showing and hiding background overlay on mobile
 var sleakWidgetOpened = document.getElementById("sleak-widget-close");

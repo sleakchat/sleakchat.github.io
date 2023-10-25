@@ -150,39 +150,32 @@ console.log("hasPopupBeenTriggered:", hasPopupBeenTriggered);
 
 // Check if the popup has not been triggered yet
 if (!hasPopupBeenTriggered) {
-  window.onload = function () {
-    setTimeout(function () {
-      var sleakBodyEmbed = document.getElementById("sleak-body-embed");
-      var sleakPopupOpen = document.getElementById("sleak-popup-embed");
-      var sleakChime = document.getElementById("sleak-chime");
+  setTimeout(function () {
+    var sleakBodyEmbed = document.getElementById("sleak-body-embed");
+    var sleakPopupOpen = document.getElementById("sleak-popup-embed");
+    var sleakChime = document.getElementById("sleak-chime");
 
-      console.log("sleakBodyEmbed:", sleakBodyEmbed);
-      console.log("sleakPopupOpen:", sleakPopupOpen);
-      console.log("sleakChime:", sleakChime);
+    if (sleakBodyEmbed && sleakPopupOpen) {
+      if (sleakBodyEmbed.style.display !== "flex") {
+        sleakPopupOpen.style.display = "flex";
+        playChime();
 
-      if (sleakBodyEmbed && sleakPopupOpen) {
-        if (sleakBodyEmbed.style.display !== "flex") {
-          sleakPopupOpen.style.display = "flex";
-          playChime();
+        sleakPopupOpen.style.opacity = "0"; // Set initial opacity to 0
+        sleakPopupOpen.style.transform = "translateY(20px)";
+        sleakPopupOpen.style.transition =
+          "opacity 0.5s ease, transform 0.5s ease";
 
-          sleakPopupOpen.style.opacity = "0"; // Set initial opacity to 0
-          sleakPopupOpen.style.transform = "translateY(20px)";
-          sleakPopupOpen.style.transition =
-            "opacity 0.5s ease, transform 0.5s ease";
+        // Delay setting the opacity and transform to 1 to trigger the fade-in-up effect
+        setTimeout(function () {
+          sleakPopupOpen.style.opacity = "1";
+          sleakPopupOpen.style.transform = "translateY(0)";
+        }, 50);
 
-          // Delay setting the opacity and transform to 1 to trigger the fade-in-up effect
-          setTimeout(function () {
-            sleakPopupOpen.style.opacity = "1";
-            sleakPopupOpen.style.transform = "translateY(0)";
-          }, 50);
-
-          // Set the flag in sessionStorage to indicate that the popup has been triggered
-          sessionStorage.setItem(sessionStorageKey, "true");
-          console.log("Popup has been triggered.");
-        }
+        // Set the flag in sessionStorage to indicate that the popup has been triggered
+        sessionStorage.setItem(sessionStorageKey, "true");
       }
-    }, 6000);
-  };
+    }
+  }, 6000);
 }
 
 // script for showing and hiding background overlay on mobile

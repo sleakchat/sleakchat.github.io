@@ -146,7 +146,7 @@ function playChime() {
 var sessionStorageKey = clientId + "_sleakPopupTriggered";
 var hasPopupBeenTriggered = sessionStorage.getItem(sessionStorageKey);
 
-console.log("hasPopupBeenTriggered:", hasPopupBeenTriggered);
+console.log("has popup triggered:", hasPopupBeenTriggered);
 
 // Check if the popup has not been triggered yet
 if (!hasPopupBeenTriggered) {

@@ -146,6 +146,8 @@ function playChime() {
 var sessionStorageKey = clientId + "_sleakPopupTriggered";
 var hasPopupBeenTriggered = sessionStorage.getItem(sessionStorageKey);
 
+console.log("hasPopupBeenTriggered:", hasPopupBeenTriggered);
+
 // Check if the popup has not been triggered yet
 if (!hasPopupBeenTriggered) {
   window.onload = function () {
@@ -153,6 +155,10 @@ if (!hasPopupBeenTriggered) {
       var sleakBodyEmbed = document.getElementById("sleak-body-embed");
       var sleakPopupOpen = document.getElementById("sleak-popup-embed");
       var sleakChime = document.getElementById("sleak-chime");
+
+      console.log("sleakBodyEmbed:", sleakBodyEmbed);
+      console.log("sleakPopupOpen:", sleakPopupOpen);
+      console.log("sleakChime:", sleakChime);
 
       if (sleakBodyEmbed && sleakPopupOpen) {
         if (sleakBodyEmbed.style.display !== "flex") {
@@ -172,6 +178,7 @@ if (!hasPopupBeenTriggered) {
 
           // Set the flag in sessionStorage to indicate that the popup has been triggered
           sessionStorage.setItem(sessionStorageKey, "true");
+          console.log("Popup has been triggered.");
         }
       }
     }, 6000);

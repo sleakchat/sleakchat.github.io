@@ -35,6 +35,6 @@ window.onload = function () {
       .catch((error) => {
         console.error("Error occurred while loading resources:", error);
       });
-  }, 2000);
+  }, 200);
 };
 

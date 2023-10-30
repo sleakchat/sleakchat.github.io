@@ -24,14 +24,17 @@ function fetchAndAppendHtml() {
     });
 }
 
-// Wait for the DOM content to load and then append the JS script
+// Wait for the window to load
 window.onload = function () {
-  fetchAndAppendHtml()
-    .then(() => {
-      appendSleakJsToBody();
-      console.log("Sleak initialized");
-    })
-    .catch((error) => {
-      console.error("Error occurred while loading resources:", error);
-    });
+  setTimeout(function () {
+    fetchAndAppendHtml()
+      .then(() => {
+        appendSleakJsToBody();
+        console.log("Sleak initialized");
+      })
+      .catch((error) => {
+        console.error("Error occurred while loading resources:", error);
+      });
+  }, 2000);
 };
+

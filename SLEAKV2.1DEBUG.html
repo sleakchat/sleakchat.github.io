@@ -5,20 +5,21 @@
 </head> 
 <body class="sleakbody"> 
 
+
+
 <!-- sleak.chat sleakbot embed snippet -->
-<script id="sleakbot" src="" user-id="mem_sb_clfl8lhky0eiq0sk41kaaaktl" btn-color="#000"></script>
+<script id="sleakbot" src="" user-id="mem_sb_clfl8lhky0eiq0sk41kaaaktl" btn-color="#000" btn-image="https://uploads-ssl.webflow.com/641224d3d867b0d5aade1f7c/6599e145264ad19f20e15038_Untitled%20design%20(52).png"></script>
+
+
 
 <div id="sleak-widgetwrap">
     
   <div id="sleak-body-embed" class="sleak-embed">
+      <div id="sleak-widget-close">
+          <img src="https://uploads-ssl.webflow.com/64558916e4efcf5c5355b1d1/64831ee66e9b71302aa1490b_sleak-close-icon%20(1).png" alt="Close Icon">
+      </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.2.11/iframeResizer.min.js"></script>
-    <div id="sleak-widget-close">
-      <img src="https://uploads-ssl.webflow.com/64558916e4efcf5c5355b1d1/64831ee66e9b71302aa1490b_sleak-close-icon%20(1).png" alt="Close Icon">
-  </div>
     <iframe id="sleak-widget-iframe" frameborder="0" scrolling="no" src="" height="100%" width="400px" allowtransparency="true"></iframe>
-    <div id="sleak-loadingwrap">
-      <img id="sleak-loader" src="https://95c4299bd7e6e57cacd63bc0daa40451.cdn.bubble.io/f1693604932416x452467196980512960/641d724c903a71c2ef9b46d4_Rolling-1.2s-201px.gif?_gl=1*4akmpl*_ga*MTYyODQwOTA1Ny4xNjg2MjMyNzM0*_ga_BFPVR2DEE2*MTY5MzYwNDc0Ny42LjEuMTY5MzYwNDkyNy41Ny4wLjA."></img>
-    </div>
   </div>
 
   <div id="sleak-popup-embed" class="sleak-embed">
@@ -52,160 +53,175 @@
 </div> 
 
 
+
+
+
+
 <script>
-function getClientId() {
-  const sleakbotScriptTag = document.querySelector('#sleakbot');
-  const clientId = sleakbotScriptTag.getAttribute('user-id');
-  const btnColor = sleakbotScriptTag.getAttribute('btn-color');
-  return { clientId, btnColor };
+  function getClientId() {
+  const sleakbotScriptTag = document.querySelector("#sleakbot");
+  const clientId = sleakbotScriptTag.getAttribute("user-id");
+  const btnColor = sleakbotScriptTag.getAttribute("btn-color");
+  const btnImage = sleakbotScriptTag.getAttribute("btn-image");
+  return { clientId, btnColor, btnImage };
 }
 
-// Set the background color of #sleak-btn-container to the value of the 'btn-color' attribute
-var sleakBtnContainer = document.querySelector('#sleak-btn-container');
-var btnColor = getClientId().btnColor;
-var sleakButtonWrap = document.querySelector('#sleak-buttonwrap');
-sleakBtnContainer.style.backgroundColor = btnColor;
-sleakButtonWrap.style.opacity = '0'; // Set initial opacity to 0
-sleakButtonWrap.style.transition = 'opacity 0.2s ease'; // Add transition effect
+const { btnImage } = getClientId();
 
-// Delay setting the opacity to 1 to trigger the fade-in effect
-setTimeout(function() {
-  sleakButtonWrap.style.opacity = '1';
+if (btnImage) {
+  var btnImages = document.querySelectorAll('#sleak-btn-openclosed img');
+  var btnImageURL = btnImage;
+  btnImages.forEach(function(image) {
+    image.src = btnImageURL;
+  });
+}
+
+
+
+// Set btn bg color and show btn
+var sleakBtnContainer = document.querySelector("#sleak-btn-container");
+var btnColor = getClientId().btnColor;
+
+var sleakButtonWrap = document.querySelector("#sleak-buttonwrap");
+sleakBtnContainer.style.backgroundColor = btnColor;
+sleakButtonWrap.style.opacity = "0";
+sleakButtonWrap.style.transition = "opacity 0.2s ease";
+
+setTimeout(function () {
+  sleakButtonWrap.style.opacity = "1";
 }, 500);
 
 function generateUniqueId() {
-  var visitorId = localStorage.getItem('visitorId');
+  var visitorId = localStorage.getItem("visitorId");
   if (!visitorId) {
-    visitorId = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-    localStorage.setItem('visitorId', visitorId);
+    visitorId =
+      Math.random().toString(36).substring(2, 15) +
+      Math.random().toString(36).substring(2, 15);
+    localStorage.setItem("visitorId", visitorId);
   }
   return visitorId;
 }
 
-
-var iframe2 = document.getElementById('sleak-popup-iframe');
-iframe2.src = `https://app.sleak.chat/popup/?id=${clientId}&visitorId=${visitorId}`;
-
-var iframe = document.getElementById('sleak-widget-iframe');
+var iframe2 = document.getElementById("sleak-popup-iframe");
+var iframe = document.getElementById("sleak-widget-iframe");
 var clientId = getClientId().clientId;
 var visitorId = generateUniqueId();
-const iframeDelayed = `https://app.sleak.chat/version-test/?id=${clientId}&visitorId=${visitorId}`;
+iframe2.src = `https://app.sleak.chat/popup/?id=${clientId}&visitorId=${visitorId}`;
+const iframeDelayed = `https://app.sleak.chat/?id=${clientId}&visitorId=${visitorId}`;
 
 // Change element visibility on button click
 // Get references to the elements
-const sleakClosedWidget = document.querySelector('#sleak-widget-closed');
-const sleakOpenWidget = document.querySelector('#sleak-widget-open');
-const sleakEmbeddedWidget = document.querySelector('#sleak-body-embed');
-const sleakBgOverlay = document.querySelector('#sleak-bgoverlay');
-const sleakEmbeddedPopup = document.querySelector('#sleak-popup-embed');
-const sleakNotification = document.querySelector('#sleak-btn-notification');
-const sleakPopupClose = document.querySelector('#sleak-popup-close');
-const sleakMobileClose = document.querySelector('#sleak-widget-close');
-const sleakLoading = document.querySelector('#sleak-loadingwrap');
-const sleakIframe = document.querySelector('#sleak-widget-iframe');
+const sleakClosedWidget = document.querySelector("#sleak-widget-closed");
+const sleakOpenWidget = document.querySelector("#sleak-widget-open");
+const sleakEmbeddedWidget = document.querySelector("#sleak-body-embed");
+const sleakBgOverlay = document.querySelector("#sleak-bgoverlay");
+const sleakEmbeddedPopup = document.querySelector("#sleak-popup-embed");
+const sleakNotification = document.querySelector("#sleak-btn-notification");
+const sleakPopupClose = document.querySelector("#sleak-popup-close");
+const sleakMobileClose = document.querySelector("#sleak-widget-close");
+const sleakLoading = document.querySelector("#sleak-loadingwrap");
+const sleakIframe = document.querySelector("#sleak-widget-iframe");
 
 let firstButtonClick = true; // Flag to track the first button click
 
 // Define the function to handle widget opening
 function openSleakWidget() {
   if (firstButtonClick) {
-    
     // Render the iframe
     iframe.src = iframeDelayed;
 
     // Set the display properties of the elements
-    sleakClosedWidget.style.display = 'none';
-    sleakOpenWidget.style.display = 'block';
-    sleakEmbeddedWidget.style.display = 'flex';
-    sleakBgOverlay.style.display = 'block';
-    sleakEmbeddedPopup.style.display = 'none';
-    sleakEmbeddedWidget.style.opacity = '0'; // Set initial opacity to 0
-    sleakEmbeddedWidget.style.transition = 'opacity 0.2s ease'; // Add transition effect
-      // Delay setting the opacity to 1 to trigger the fade-in effect
-      setTimeout(function() {
-      sleakEmbeddedWidget.style.opacity = '1';
+    sleakClosedWidget.style.display = "none";
+    sleakOpenWidget.style.display = "block";
+    sleakEmbeddedWidget.style.display = "flex";
+    sleakBgOverlay.style.display = "block";
+    sleakEmbeddedPopup.style.display = "none";
+    sleakEmbeddedWidget.style.opacity = "0"; // Set initial opacity to 0
+    sleakEmbeddedWidget.style.transition = "opacity 0.2s ease"; // Add transition effect
+    // Delay setting the opacity to 1 to trigger the fade-in effect
+    setTimeout(function () {
+      sleakEmbeddedWidget.style.opacity = "1";
     }, 50);
-    
+
     // Delay showing the iframe
-    setTimeout(function() {
-    // Hide loading wrap
-    sleakIframe.style.display = 'block';
-    sleakIframe.style.opacity = '0'; // Set initial opacity to 0
-    sleakIframe.style.transition = 'opacity 0.2s ease'; // Add transition effect
-    setTimeout(function() {
-  sleakIframe.style.opacity = '1';
-}, 500);
-    
+    setTimeout(function () {
+      // Hide loading wrap
+      sleakIframe.style.display = "block";
+      sleakIframe.style.opacity = "0"; // Set initial opacity to 0
+      sleakIframe.style.transition = "opacity 0.2s ease"; // Add transition effect
+      setTimeout(function () {
+        sleakIframe.style.opacity = "1";
+      }, 500);
     }, 1000);
-    
+
     firstButtonClick = false; // Update the flag
   } else {
-
     // If it's not the first click, open immediately
-    sleakClosedWidget.style.display = 'none';
-    sleakOpenWidget.style.display = 'block';
-    sleakEmbeddedWidget.style.display = 'flex';
-    sleakBgOverlay.style.display = 'block';
-    sleakEmbeddedPopup.style.display = 'none';
-    sleakEmbeddedWidget.style.opacity = '0'; // Set initial opacity to 0
-    sleakEmbeddedWidget.style.transition = 'opacity 0.2s ease'; // Add transition effect
-    
+    sleakClosedWidget.style.display = "none";
+    sleakOpenWidget.style.display = "block";
+    sleakEmbeddedWidget.style.display = "flex";
+    sleakBgOverlay.style.display = "block";
+    sleakEmbeddedPopup.style.display = "none";
+    sleakEmbeddedWidget.style.opacity = "0"; // Set initial opacity to 0
+    sleakEmbeddedWidget.style.transition = "opacity 0.2s ease"; // Add transition effect
+
     // Delay setting the opacity to 1 to trigger the fade-in effect
-    setTimeout(function() {
-      sleakEmbeddedWidget.style.opacity = '1';
+    setTimeout(function () {
+      sleakEmbeddedWidget.style.opacity = "1";
     }, 50);
-    
   }
 }
 
 // Add click event listener to the closed widget
-sleakClosedWidget.addEventListener('click', (openSleakWidget));
+sleakClosedWidget.addEventListener("click", openSleakWidget);
 
 // Add click event listener to the popup
-sleakEmbeddedPopup.addEventListener('click', (openSleakWidget));
+sleakEmbeddedPopup.addEventListener("click", openSleakWidget);
 
-
-  // Add click event listener to the button (when widget open)
-  sleakOpenWidget.addEventListener('click', function() {
-    // Set the display properties of the elements
-    sleakClosedWidget.style.display = 'block';
-    sleakOpenWidget.style.display = 'none';
-    sleakEmbeddedWidget.style.display = 'none';
-    sleakBgOverlay.style.display = 'none';
-    sleakEmbeddedPopup.style.display = 'none';
-  });
+// Add click event listener to the button (when widget open)
+sleakOpenWidget.addEventListener("click", function () {
+  // Set the display properties of the elements
+  sleakClosedWidget.style.display = "block";
+  sleakOpenWidget.style.display = "none";
+  sleakEmbeddedWidget.style.display = "none";
+  sleakBgOverlay.style.display = "none";
+  sleakEmbeddedPopup.style.display = "none";
+});
 
 // Add click event listener to popup close btn
-  sleakPopupClose.addEventListener('click', function(sleakCloseBtnEvent) {
-    // stop event from propagating
-    sleakCloseBtnEvent.stopPropagation();
-      // Set the display properties of the elements
-      sleakEmbeddedPopup.style.display = 'none';
-  });
+sleakPopupClose.addEventListener("click", function (sleakCloseBtnEvent) {
+  // stop event from propagating
+  sleakCloseBtnEvent.stopPropagation();
+  // Set the display properties of the elements
+  sleakEmbeddedPopup.style.display = "none";
+});
 
 // Add click event listener to widget close btn
-sleakMobileClose.addEventListener('click', function(sleakCloseMobileEvent) {
-    // stop event from propagating
-    sleakCloseMobileEvent.stopPropagation();
-      // Set the display properties of the elements
-      sleakEmbeddedWidget.style.display = 'none';
-      sleakOpenWidget.style.display = 'none';
-      sleakClosedWidget.style.display = 'block';
-      sleakBgOverlay.style.display = 'none';
-  });
+sleakMobileClose.addEventListener("click", function (sleakCloseMobileEvent) {
+  // stop event from propagating
+  sleakCloseMobileEvent.stopPropagation();
+  // Set the display properties of the elements
+  sleakEmbeddedWidget.style.display = "none";
+  sleakOpenWidget.style.display = "none";
+  sleakClosedWidget.style.display = "block";
+  sleakBgOverlay.style.display = "none";
+});
 
 // function for playing chime
 function playChime() {
   var sleakChime = document.getElementById("sleak-chime");
   if (sleakChime) {
     sleakChime.play();
-    console.log("Chime played");
   }
 }
 
-// show popup 6 secs after page load
-window.onload = function() {
-  setTimeout(function() {
+// Check if the popup has already been triggered in this session
+var sessionStorageKey = clientId + "_sleakPopupTriggered";
+var hasPopupBeenTriggered = sessionStorage.getItem(sessionStorageKey);
+
+// Check if the popup has not been triggered yet
+if (!hasPopupBeenTriggered) {
+  setTimeout(function () {
     var sleakBodyEmbed = document.getElementById("sleak-body-embed");
     var sleakPopupOpen = document.getElementById("sleak-popup-embed");
     var sleakChime = document.getElementById("sleak-chime");
@@ -213,387 +229,395 @@ window.onload = function() {
     if (sleakBodyEmbed && sleakPopupOpen) {
       if (sleakBodyEmbed.style.display !== "flex") {
         sleakPopupOpen.style.display = "flex";
-        console.log("Popup display changed to flex");
         playChime();
 
-        sleakPopupOpen.style.opacity = '0'; // Set initial opacity to 0
-        sleakPopupOpen.style.transform = 'translateY(20px)'; // Initial vertical translation
-        sleakPopupOpen.style.transition = 'opacity 0.5s ease, transform 0.5s ease'; // Add transition effects
+        sleakPopupOpen.style.opacity = "0"; // Set initial opacity to 0
+        sleakPopupOpen.style.transform = "translateY(20px)";
+        sleakPopupOpen.style.transition =
+          "opacity 0.5s ease, transform 0.5s ease";
 
         // Delay setting the opacity and transform to 1 to trigger the fade-in-up effect
-        setTimeout(function() {
-          sleakPopupOpen.style.opacity = '1';
-          sleakPopupOpen.style.transform = 'translateY(0)';
-          console.log("Popup opacity changed to 1, transform applied");
+        setTimeout(function () {
+          sleakPopupOpen.style.opacity = "1";
+          sleakPopupOpen.style.transform = "translateY(0)";
         }, 50);
 
-      } else {
-        console.log("Popup cannot open when sleak-body-embed is displayed");
+        // Set the flag in sessionStorage to indicate that the popup has been triggered
+        sessionStorage.setItem(sessionStorageKey, "true");
       }
     }
   }, 6000);
-};
+}
 
-    // script for showing and hiding background overlay on mobile
-    var sleakWidgetOpened = document.getElementById("sleak-widget-close");
-    var sleakWidgetClosed = document.getElementById("sleak-widget-closed");
+// script for showing and hiding background overlay on mobile
+var sleakWidgetOpened = document.getElementById("sleak-widget-close");
+var sleakWidgetClosed = document.getElementById("sleak-widget-closed");
 
-    if (window.matchMedia("(max-width: 768px)").matches) {
-      sleakWidgetOpened.addEventListener("click", function() {
-        document.body.style.overflow = "auto";
-        console.log("Body overflow set to hidden.");
-      });
-      sleakWidgetClosed.addEventListener("click", function() {
-        document.body.style.overflow = "hidden";
-        console.log("Body overflow set to auto.");
+if (window.matchMedia("(max-width: 768px)").matches) {
+  sleakWidgetOpened.addEventListener("click", function () {
+    document.body.style.overflow = "auto";
+  });
+  sleakWidgetClosed.addEventListener("click", function () {
+    document.body.style.overflow = "hidden";
   });
 }
 
+// GTM events
+
+// event listener for child window
+(function (window) {
+  function isValidJSON(str) {
+    try {
+      JSON.parse(str);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  window.addEventListener("message", function (message) {
+    var data;
+
+    if (typeof message.data !== "string" || !isValidJSON(message.data)) {
+      return;
+    }
+
+    data = JSON.parse(message.data);
+
+    var validEvents = ["sleakChatInitiated", "sleakLeadGenerated"];
+
+    if (!data.event || validEvents.indexOf(data.event) === -1) {
+      return;
+    }
+
+    console.log("Received message:", data);
+    var dataLayer = window.dataLayer || (window.dataLayer = []);
+    if (data.event) {
+      dataLayer.push({
+        event: data.event,
+        postMessageData: data,
+      });
+      console.log("Pushed to dataLayer:", data);
+    }
+  });
+})(window);
+
 </script>
+
+
+
+
+
+
+
+
 <style>
-  #sleak-loadingwrap {
-    position: absolute;
-    display: flex;
-    height: 595px;
-    width: 360px;
-    background-color: #fff;
-    box-sizing: border-box; /* Includes margin in element's width and height */
-    margin: 20px 20px 50px 0px;
-    border-radius: 15px;
-    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.1);
-    z-index: 0;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    pointer-events: none;
-  }
+#sleak-widget-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  height: 36px;
+  width: 36px;
+  border-radius: 99px;
+  right: 39px;
+  top: 38px;
+  z-index: 999999999999;
+  color: rgba(0, 0, 0, 0.40);
+  cursor: pointer;
+  transition: display 1s ease-in-out;
+  border-radius: 6px;
+}
 
-  #sleak-widget-iframe {
-    display: none;
-    pointer-events: auto !important;
-    z-index: 1 !important;
-  }
+#sleak-widget-close:hover {
+  background-color: rgba(0, 0, 0, 0.05);;
+}
 
-  #sleak-loader {
-    position: absolute;
-    height: 16px;
-    width: 16px;
-  }
- 
+#sleak-widget-close img {
+  opacity: 0.8;
+  width: 12px;
+  height: 12px;
+}
+
+#sleak-popup-close {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  background-color: rgba(0, 0, 0, 0.20);
+  border-radius: 99px;
+  top: 70px;
+  left: 0;
+  z-index: 99999999999;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+  transition: display 1s ease-in-out;
+}
+
+#sleak-popup-embed:hover #sleak-popup-close {
+  display: flex !important;
+}
+
+#sleak-popup-embed {
+  pointer-events: auto;
+  margin-bottom: -15px;
+  height: 175px;
+  width: 352px;
+  min-width: 352px;
+  background-color: rgba(255, 255, 255, 0);
+  justify-content: center;
+  align-items: flex-end;
+  display: none;
+  justify-content: flex-end;
+  top: 0px;
+  direction: vertical;
+  top: auto;
+  bottom: 0%;
+  left: auto;
+  right: 0%;
+}
+
+#sleak-popup-iframe {
+  width: 400px;
+  height: 175px;
+  z-index: 99999999999999;
+  pointer-events: none;
+}
+
+.sleak-embed {
+  z-index: 1;
+  width: 400px;
+  min-width:400px;
+  height: 600px;
+  background-color: rgba(255, 255, 255, 0);
+  justify-content: center;
+  align-items: flex-end;
+  display: none;
+  top: auto;
+  bottom: 0%;
+  left: auto;
+  right: 0%;
+  z-index: 99999999;
+  width: auto;
+  height: auto;
+  min-height: 0;
+  justify-content: flex-end;
+  display: none;
+  position: static;
+}
+
+#sleak-buttonwrap {
+  pointer-events: auto;
+  z-index: 9999999999999999;
+  opacity: 0;
+}
+
+#sleak-buttonshadow {
+  position: absolute;
+  height: 65px;
+  width: 65px;
+  box-shadow: 0 0px 8px 0px rgba(0, 0, 0, 0.2) !important;
+  border-radius: 99px;
+  align-self: center;
+}
+
+#sleak-btn-notification {
+  box-sizing: border-box;
+  z-index: 2;
+  position: absolute;
+  margin-left: 48px;
+  margin-bottom: 48px;
+  height: 17px;
+  width: 17px;
+  background-color: #48E385;
+  border-radius: 99px;
+  border: solid;
+  border-width: 3px;
+  border-color: #fff;
+}
+
+#sleak-btn-container {
+  z-index: 99999999999999;
+  width: auto;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-right: 30px;
+  display: flex;
+  position: static;
+  top: auto;
+  bottom: 30px;
+  left: auto;
+  right: 30px;
+
+  -webkit-mask-image: url('https://uploads-ssl.webflow.com/64558916e4efcf5c5355b1d1/6458d058560e97be74ebb657_Sleak%20logo%20-%20beeldmerk%20open.svg');
+  mask-image: url('https://uploads-ssl.webflow.com/64558916e4efcf5c5355b1d1/6458d058560e97be74ebb657_Sleak%20logo%20-%20beeldmerk%20open.svg');
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  background-color: #ffffff; /* fallback color */
+}
+
+#sleak-widgetwrap {
+  z-index: 999999999;
+  max-height: 720px;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  display: flex;
+  position: fixed;
+  top: auto;
+  bottom: 0%;
+  left: auto;
+  right: 0%;
+}
+
+#sleak-bgoverlay {
+  z-index:0;
+  width: 0;
+  height: 0;
+  max-height: 0;
+  max-width: 0;
+}
+
+#sleak-body-embed {
+  height: 700px;
+  pointer-events: auto;
+  margin-bottom: -40px;
+}
+
+#sleak-widget-open {
+  display: none;
+}
+
+#sleak-btn-openclosed {
+  width: 65px;
+  height: 65px;
+}
+
+#sleak-btn-openclosed img {
+  max-width: 100%;
+  cursor: pointer;
+}
+
+.sleakbody {
+  all: unset !important;
+}
+
+.sleakhtml {
+  all: unset !important;
+}
+
+.sleakhead {
+  all: unset !important;
+}
+
+@media screen and (max-width: 479px) {
+
   #sleak-widget-close {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    height: 36px;
-    width: 36px;
-    border-radius: 99px;
-    right: 39px;
-    top: 38px;
-    z-index: 999;
-    color: rgba(0, 0, 0, 0.40);
-    cursor: pointer;
-    transition: display 1s ease-in-out;
-    border-radius: 6px;
-    pointer-events: auto !important;
+  height: 36px;
+  width: 36px;
+  right: 18px;
+  top: 18px;
   }
-  
-  #sleak-widget-close:hover {
-    background-color: rgba(0, 0, 0, 0.05);;
+
+  #sleak-widget-close:active {
+  background-color: rgba(0, 0, 0, 0.05);;
   }
-  
-  #sleak-widget-close img {
-    opacity: 0.8;
-    width: 12px;
-    height: 12px;
-    align-self: center;
-  }
-  
-  #sleak-popup-close {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    height: 18px;
-    width: 18px;
-    background-color: rgba(0, 0, 0, 0.20);
-    border-radius: 99px;
-    top: 70px;
-    left: 0;
-    z-index: 99999999999;
-    color: #fff;
-    font-size: 12px;
-    cursor: pointer;
-    transition: display 1s ease-in-out;
-  }
-  
-  #sleak-popup-embed:hover #sleak-popup-close {
-    display: flex !important;
-  }
-  
-  #sleak-popup-embed {
-    pointer-events: auto;
-    margin-bottom: -15px;
-    height: 175px;
-    width: 352px;
-    min-width: 352px;
-    background-color: rgba(255, 255, 255, 0);
-    justify-content: center;
-    align-items: flex-end;
-    display: none;
-    justify-content: flex-end;
-    top: 0px;
-    direction: vertical;
-    top: auto;
-    bottom: 0%;
-    left: auto;
-    right: 0%;
-  }
-  
-  #sleak-popup-iframe {
-    width: 400px;
-    height: 175px;
-    z-index: 99999999999999;
-    pointer-events: none;
-  }
-  
-  .sleak-embed {
-    z-index: 1;
-    width: 400px;
-    min-width:400px;
-    height: 600px;
-    background-color: rgba(255, 255, 255, 0);
-    justify-content: center;
-    align-items: flex-end;
-    display: none;
-    top: auto;
-    bottom: 0%;
-    left: auto;
-    right: 0%;
-    z-index: 99999999;
-    width: auto;
-    height: auto;
-    min-height: 0;
-    justify-content: flex-end;
-    display: none;
-    position: static;
-  }
-  
-  #sleak-buttonwrap {
-    pointer-events: auto;
-    z-index: 9999999999999999;
-    opacity: 0;
-  }
-  
-  #sleak-buttonshadow {
-    position: absolute;
-    height: 65px;
-    width: 65px;
-    box-shadow: 0 0px 8px 0px rgba(0, 0, 0, 0.2) !important;
-    border-radius: 99px;
-    align-self: center;
-  }
-  
-  #sleak-btn-notification {
-    box-sizing: border-box;
-    z-index: 2;
-    position: absolute;
-    margin-left: 48px;
-    margin-bottom: 48px;
-    height: 17px;
-    width: 17px;
-    background-color: #48E385;
-    border-radius: 99px;
-    border: solid;
-    border-width: 3px;
-    border-color: #fff;
-  }
-  
-  #sleak-btn-container {
-    z-index: 99999999999999;
-    width: auto;
-    height: auto;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 30px;
-    margin-right: 30px;
-    display: flex;
-    position: static;
-    top: auto;
-    bottom: 30px;
-    left: auto;
-    right: 30px;
-  
-    -webkit-mask-image: url('https://uploads-ssl.webflow.com/64558916e4efcf5c5355b1d1/6458d058560e97be74ebb657_Sleak%20logo%20-%20beeldmerk%20open.svg');
-    mask-image: url('https://uploads-ssl.webflow.com/64558916e4efcf5c5355b1d1/6458d058560e97be74ebb657_Sleak%20logo%20-%20beeldmerk%20open.svg');
-    -webkit-mask-size: contain;
-    mask-size: contain;
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    mask-position: center;
-    background-color: #ffffff; /* fallback color */
-  }
-  
+
   #sleak-widgetwrap {
+    pointer-events: none;
     z-index: 999999999;
-    max-height: 720px;
+    width: 100vw;
+    height: 100%;
+    height: -webkit-fill-available;
+    background-color: rgba(0, 0, 0, 0);
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
+    padding-bottom: 0;
+    padding-right: 0;
     display: flex;
+    position: fixed;
+
+    max-height: unset;
+  }
+
+  #sleak-widget-iframe {
+    z-index: 999999999;
+    height: 100% !important;
+    height: -webkit-fill-available;
+    top: 0;
+    top: 0px;
+    width: 100%;
+    min-width: 100%;
+  }
+
+  #sleak-bgoverlay {
+    z-index: -1;
+    width: 100%;
+    height: 150%;
+    max-height: none;
+    max-width: none;
+    min-height: 100%;
+    min-width: 100%;
+    background-color: rgba(255, 255, 255, 1);
+    display: none;
     position: fixed;
     top: auto;
     bottom: 0%;
-    left: auto;
+    left: 0%;
     right: 0%;
+    overflow: hidden;
   }
-  
-  #sleak-bgoverlay {
-    z-index:0;
-    width: 0;
-    height: 0;
-    max-height: 0;
-    max-width: 0;
-  }
-  
-  #sleak-body-embed {
-    height: 700px;
-    pointer-events: auto;
-    margin-bottom: -40px;
-  }
-  
-  #sleak-widget-open {
-    display: none;
-  }
-  
-  #sleak-btn-openclosed {
-    width: 65px;
-    height: 65px;
-  }
-  
-  #sleak-btn-openclosed img {
-    max-width: 100%;
-    cursor: pointer;
-  }
-  
-  .sleakbody {
-    all: unset !important;
-  }
-  
-  .sleakhtml {
-    all: unset !important;
-  }
-  
-  .sleakhead {
-    all: unset !important;
-  }
-  
-  @media screen and (max-width: 479px) {
 
-    #sleak-loadingwrap {
-      height: 100%;
-      width: 100%;
-      margin: 0 0 0 0;
-      pointer-events: auto;
-    }
-    
-    #sleak-widget-close {
-      height: 36px;
-      width: 36px;
-      right: 18px;
-      top: 18px;
-      pointer-events: auto;
-    }
-    
-    #sleak-widget-close:active {
-      background-color: rgba(0, 0, 0, 0.05);
-    }
-  
-    #sleak-widgetwrap {
-      pointer-events: auto;
-      z-index: 99999999999999 !important;
-      width: 100vw;
-      height: 100%;
-      height: -webkit-fill-available;
-      background-color: rgba(0, 0, 0, 0);
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: flex-end;
-      padding-bottom: 0;
-      padding-right: 0;
-      display: flex;
-      position: fixed;
-      max-height: unset;
-    }
-  
-    #sleak-widget-iframe {
-      z-index: 1;
-      height: 100% !important;
-      height: -webkit-fill-available;
-      top: 0;
-      top: 0px;
-      width: 100%;
-      min-width: 100%;
-    }
-  
-    #sleak-bgoverlay {
-      z-index: -1;
-      width: 100%;
-      height: 150%;
-      max-height: none;
-      max-width: none;
-      min-height: 100%;
-      min-width: 100%;
-      background-color: rgba(255, 255, 255, 1);
-      display: none;
-      position: fixed;
-      top: auto;
-      bottom: 0%;
-      left: 0%;
-      right: 0%;
-      overflow: hidden;
-    }
-  
-    #sleak-body-embed {
-      z-index: 999999999999999999;
-      width: 100vw;
-      height: 100%;
-      z-index: 1;
-      margin-bottom: -95px;
-    }
-  
-    #sleak-buttonwrap {
-      z-index: 0;
-    }
-  
-    .sleak-embed {
-      width: 100vw;
-      height: 100%;
-      height: -webkit-fill-available;
-      top: 0;
-      top: 0px;
-  
-      min-width: 300px;
-      object-fit: fill;
-      overflow: visible;
-      z-index: 9999999999999;
-    }
-  
-    .sleak-embed:focus {
-      margin-bottom: 0;
-    }
-  
-    #sleak-popup-embed {
-      max-height: 175px !important;
-  
-    }
-  
-    #sleak-popup-close {
-      display: flex !important;
-      opacity: 1 !important;
-    }
+  #sleak-body-embed {
+    z-index: 999999999999999999;
+    width: 100vw;
+    height: 100%;
+    z-index: 1;
+    margin-bottom: -95px;
   }
-  </style>
+
+  #sleak-buttonwrap {
+    z-index: 0;
+  }
+
+  .sleak-embed {
+    width: 100vw;
+    height: 100%;
+    height: -webkit-fill-available;
+    top: 0;
+    top: 0px;
+
+    min-width: 300px;
+    object-fit: fill;
+    overflow: visible;
+    z-index: 9999999999999;
+  }
+
+  .sleak-embed:focus {
+    margin-bottom: 0;
+  }
+
+  #sleak-popup-embed {
+    max-height: 175px !important;
+
+  }
+
+  #sleak-popup-close {
+    display: flex !important;
+    opacity: 1 !important;
+  }
+}
+</style>
 
 </body>
 </html>

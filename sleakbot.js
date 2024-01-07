@@ -2,18 +2,30 @@ function getClientId() {
   const sleakbotScriptTag = document.querySelector("#sleakbot");
   const clientId = sleakbotScriptTag.getAttribute("user-id");
   const btnColor = sleakbotScriptTag.getAttribute("btn-color");
-  return { clientId, btnColor };
+  const btnImage = sleakbotScriptTag.getAttribute("btn-image");
+  return { clientId, btnColor, btnImage };
 }
 
-// Set the background color of #sleak-btn-container to the value of the 'btn-color' attribute
+const { btnImage } = getClientId();
+
+// Set image when attribute present
+if (btnImage) {
+  var btnImages = document.querySelectorAll('#sleak-btn-openclosed img');
+  var btnImageURL = btnImage;
+  btnImages.forEach(function(image) {
+    image.src = btnImageURL;
+  });
+}
+
+// Set btn bg color and show btn
 var sleakBtnContainer = document.querySelector("#sleak-btn-container");
 var btnColor = getClientId().btnColor;
+
 var sleakButtonWrap = document.querySelector("#sleak-buttonwrap");
 sleakBtnContainer.style.backgroundColor = btnColor;
-sleakButtonWrap.style.opacity = "0"; // Set initial opacity to 0
-sleakButtonWrap.style.transition = "opacity 0.2s ease"; // Add transition effect
+sleakButtonWrap.style.opacity = "0";
+sleakButtonWrap.style.transition = "opacity 0.2s ease";
 
-// Delay setting the opacity to 1 to trigger the fade-in effect
 setTimeout(function () {
   sleakButtonWrap.style.opacity = "1";
 }, 500);
@@ -37,7 +49,6 @@ iframe2.src = `https://app.sleak.chat/popup/?id=${clientId}&visitorId=${visitorI
 const iframeDelayed = `https://app.sleak.chat/?id=${clientId}&visitorId=${visitorId}`;
 
 // Change element visibility on button click
-// Get references to the elements
 const sleakClosedWidget = document.querySelector("#sleak-widget-closed");
 const sleakOpenWidget = document.querySelector("#sleak-widget-open");
 const sleakEmbeddedWidget = document.querySelector("#sleak-body-embed");
@@ -49,65 +60,57 @@ const sleakMobileClose = document.querySelector("#sleak-widget-close");
 const sleakLoading = document.querySelector("#sleak-loadingwrap");
 const sleakIframe = document.querySelector("#sleak-widget-iframe");
 
-let firstButtonClick = true; // Flag to track the first button click
+let firstButtonClick = true;
 
-// Define the function to handle widget opening
+// Handle widget opening
 function openSleakWidget() {
   if (firstButtonClick) {
-    // Render the iframe
     iframe.src = iframeDelayed;
 
-    // Set the display properties of the elements
     sleakClosedWidget.style.display = "none";
     sleakOpenWidget.style.display = "block";
     sleakEmbeddedWidget.style.display = "flex";
     sleakBgOverlay.style.display = "block";
     sleakEmbeddedPopup.style.display = "none";
-    sleakEmbeddedWidget.style.opacity = "0"; // Set initial opacity to 0
-    sleakEmbeddedWidget.style.transition = "opacity 0.2s ease"; // Add transition effect
-    // Delay setting the opacity to 1 to trigger the fade-in effect
+    sleakEmbeddedWidget.style.opacity = "0";
+    sleakEmbeddedWidget.style.transition = "opacity 0.2s ease";
     setTimeout(function () {
       sleakEmbeddedWidget.style.opacity = "1";
     }, 50);
 
-    // Delay showing the iframe
+    // Delay showing iframe
     setTimeout(function () {
-      // Hide loading wrap
       sleakIframe.style.display = "block";
-      sleakIframe.style.opacity = "0"; // Set initial opacity to 0
-      sleakIframe.style.transition = "opacity 0.2s ease"; // Add transition effect
+      sleakIframe.style.opacity = "0";
+      sleakIframe.style.transition = "opacity 0.2s ease";
       setTimeout(function () {
         sleakIframe.style.opacity = "1";
       }, 500);
     }, 1000);
 
-    firstButtonClick = false; // Update the flag
+    firstButtonClick = false;
   } else {
-    // If it's not the first click, open immediately
+
     sleakClosedWidget.style.display = "none";
     sleakOpenWidget.style.display = "block";
     sleakEmbeddedWidget.style.display = "flex";
     sleakBgOverlay.style.display = "block";
     sleakEmbeddedPopup.style.display = "none";
-    sleakEmbeddedWidget.style.opacity = "0"; // Set initial opacity to 0
-    sleakEmbeddedWidget.style.transition = "opacity 0.2s ease"; // Add transition effect
+    sleakEmbeddedWidget.style.opacity = "0";
+    sleakEmbeddedWidget.style.transition = "opacity 0.2s ease";
 
-    // Delay setting the opacity to 1 to trigger the fade-in effect
     setTimeout(function () {
       sleakEmbeddedWidget.style.opacity = "1";
     }, 50);
   }
 }
 
-// Add click event listener to the closed widget
+// Click event listeners
 sleakClosedWidget.addEventListener("click", openSleakWidget);
-
-// Add click event listener to the popup
 sleakEmbeddedPopup.addEventListener("click", openSleakWidget);
 
-// Add click event listener to the button (when widget open)
+// Click event listener to widget open btn
 sleakOpenWidget.addEventListener("click", function () {
-  // Set the display properties of the elements
   sleakClosedWidget.style.display = "block";
   sleakOpenWidget.style.display = "none";
   sleakEmbeddedWidget.style.display = "none";
@@ -115,11 +118,11 @@ sleakOpenWidget.addEventListener("click", function () {
   sleakEmbeddedPopup.style.display = "none";
 });
 
-// Add click event listener to popup close btn
+// Click event listener to popup close btn
 sleakPopupClose.addEventListener("click", function (sleakCloseBtnEvent) {
   // stop event from propagating
   sleakCloseBtnEvent.stopPropagation();
-  // Set the display properties of the elements
+
   sleakEmbeddedPopup.style.display = "none";
 });
 
@@ -127,14 +130,14 @@ sleakPopupClose.addEventListener("click", function (sleakCloseBtnEvent) {
 sleakMobileClose.addEventListener("click", function (sleakCloseMobileEvent) {
   // stop event from propagating
   sleakCloseMobileEvent.stopPropagation();
-  // Set the display properties of the elements
+
   sleakEmbeddedWidget.style.display = "none";
   sleakOpenWidget.style.display = "none";
   sleakClosedWidget.style.display = "block";
   sleakBgOverlay.style.display = "none";
 });
 
-// function for playing chime
+// Chime
 function playChime() {
   var sleakChime = document.getElementById("sleak-chime");
   if (sleakChime) {
@@ -142,13 +145,10 @@ function playChime() {
   }
 }
 
-// Check if the popup has already been triggered in this session
+// Disable popup/chime after first page
 var sessionStorageKey = clientId + "_sleakPopupTriggered";
 var hasPopupBeenTriggered = sessionStorage.getItem(sessionStorageKey);
 
-console.log("has popup triggered:", hasPopupBeenTriggered);
-
-// Check if the popup has not been triggered yet
 if (!hasPopupBeenTriggered) {
   setTimeout(function () {
     var sleakBodyEmbed = document.getElementById("sleak-body-embed");
@@ -160,25 +160,23 @@ if (!hasPopupBeenTriggered) {
         sleakPopupOpen.style.display = "flex";
         playChime();
 
-        sleakPopupOpen.style.opacity = "0"; // Set initial opacity to 0
+        sleakPopupOpen.style.opacity = "0";
         sleakPopupOpen.style.transform = "translateY(20px)";
         sleakPopupOpen.style.transition =
           "opacity 0.5s ease, transform 0.5s ease";
 
-        // Delay setting the opacity and transform to 1 to trigger the fade-in-up effect
         setTimeout(function () {
           sleakPopupOpen.style.opacity = "1";
           sleakPopupOpen.style.transform = "translateY(0)";
         }, 50);
 
-        // Set the flag in sessionStorage to indicate that the popup has been triggered
         sessionStorage.setItem(sessionStorageKey, "true");
       }
     }
   }, 6000);
 }
 
-// script for showing and hiding background overlay on mobile
+// Background overlay on mobile
 var sleakWidgetOpened = document.getElementById("sleak-widget-close");
 var sleakWidgetClosed = document.getElementById("sleak-widget-closed");
 
@@ -191,7 +189,8 @@ if (window.matchMedia("(max-width: 768px)").matches) {
   });
 }
 
-// event listener for child window
+// GTM events event listener for child window
+
 (function (window) {
   function isValidJSON(str) {
     try {
@@ -205,29 +204,26 @@ if (window.matchMedia("(max-width: 768px)").matches) {
   window.addEventListener("message", function (message) {
     var data;
 
-    // Check if message.data is a string and if it's a valid JSON string
     if (typeof message.data !== "string" || !isValidJSON(message.data)) {
-      return; // Exit early if message.data is not a string or not a valid JSON string
+      return;
     }
 
-    // Now, parse the message.
     data = JSON.parse(message.data);
 
     var validEvents = ["sleakChatInitiated", "sleakLeadGenerated"];
 
-    // Check if the parsed message has a known event name
     if (!data.event || validEvents.indexOf(data.event) === -1) {
-      return; // Ignore messages that don't have one of the expected event names
+      return;
     }
 
-    console.log("Received message:", data); // Log the received message
+    console.log("Received message:", data);
     var dataLayer = window.dataLayer || (window.dataLayer = []);
     if (data.event) {
       dataLayer.push({
         event: data.event,
         postMessageData: data,
       });
-      console.log("Pushed data to dataLayer:", data);
+      console.log("Pushed to dataLayer:", data);
     }
   });
 })(window);

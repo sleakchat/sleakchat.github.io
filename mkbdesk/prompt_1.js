@@ -1,14 +1,14 @@
-const bedrijfsnaam = i.c1v1;
-const branche = i.c1v2;
+const bedrijfsnaam = "test";
+const branche = "test";
 
-const a1_1 = i.c1v1;
-const a1_2 = i.c1v2;
-const a1_3 = i.c1v3;
-const a1_4 = i.c1v4;
-const a1_5 = i.c1v5;
-const a1_6 = i.c1v6;
-const a1_7 = i.c1v7;
-const a1_8 = i.c1v8;
+const a1_1 = "test";
+const a1_2 = "test";
+const a1_3 = "test";
+const a1_4 = "test";
+const a1_5 = "test";
+const a1_6 = "test";
+const a1_7 = "test";
+const a1_8 = "test";
 
 let prompt1 = `We zijn een bedrijfsrapport voor ${bedrijfsnaam} aan het stellen dat buiten de introductie, 1 tot 8 hoofdstukken zal bevatten. De introductie zal gaan over AI binnen de sector ${a1_3} en de daarop volgende hoofdstukken betreffen [H1], ..., [Hx]. Elk onderdeel wordt gemaakt door een losse API completion, zoals dit daar 1 (en de eerste) van is. Als antwoord op de onderstaande prompt willen we dat je de inleiding van het rapport maakt.
 \n\n				

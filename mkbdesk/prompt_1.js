@@ -10,7 +10,7 @@ const a1_6 = "test";
 const a1_7 = "test";
 const a1_8 = "test";
 
-let prompt1 = `We zijn een bedrijfsrapport voor ${bedrijfsnaam} aan het stellen dat buiten de introductie, 1 tot 8 hoofdstukken zal bevatten. De introductie zal gaan over AI binnen de sector ${a1_3} en de daarop volgende hoofdstukken betreffen [H1], ..., [Hx]. Elk onderdeel wordt gemaakt door een losse API completion, zoals dit daar 1 (en de eerste) van is. Als antwoord op de onderstaande prompt willen we dat je de inleiding van het rapport maakt.
+prompt1 = `We zijn een bedrijfsrapport voor ${bedrijfsnaam} aan het stellen dat buiten de introductie, 1 tot 8 hoofdstukken zal bevatten. De introductie zal gaan over AI binnen de sector ${a1_3} en de daarop volgende hoofdstukken betreffen [H1], ..., [Hx]. Elk onderdeel wordt gemaakt door een losse API completion, zoals dit daar 1 (en de eerste) van is. Als antwoord op de onderstaande prompt willen we dat je de inleiding van het rapport maakt.
 \n\n				
 Basisinformatie over het bedrijf:\n
 bedrijf: ${bedrijfsnaam} \n

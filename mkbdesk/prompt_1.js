@@ -65,5 +65,3 @@ Zorg ervoor dat je NOOIT hoofdstukken verzint en/of opsomt in de inleiding, de i
 Gebruik overal markdown formatting. Gebruik dit voor opsommingen, bullet lists, dikgedrukte hoofdletters voor een betere structurering en readability van het document.\n\n
 Zorg dat je overal in het document een hierarchie toepast en titels, koppen en subkoppen verwerkt in markdown formatting. Zorg ook dat alle bullet lists en opsommingen in markdown formatting zijn. 
 \n\n//////`;
-
-return prompt1;

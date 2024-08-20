@@ -47,4 +47,4 @@ async function injectSleakScript() {
   };
 }
 
-injectSleakScript();
+// injectSleakScript();
